@@ -42,7 +42,7 @@ export function ContactDialog({
             >
                 <div className="grid min-h-[520px] min-w-[700px] md:grid-cols-2">
                     {imageSrc ? (
-                        <div className="relative hidden md:block min-h-[520px]">
+                        <div className="relative hidden md:block md:min-h-[520px]">
                             <Image
                                 src={imageSrc}
                                 alt={imageAlt}

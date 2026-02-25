@@ -23,7 +23,7 @@ export const insuranceLabel: Record<InsuranceType, string> = {
     epargne_retraite: "Épargne & retraite",
 };
 
-const phoneRegex = /^(\+?\d{1,3}[\s.-]?)?[\d\s().-]{6,}$/;
+const phoneRegex = /^(\+?\d{1,3}[\s.-]?)?\d[\d\s().-]*\d$/;
 const postalCodeFR = /^\d{5}$/;
 
 export const contactFormSchema = z.object({
