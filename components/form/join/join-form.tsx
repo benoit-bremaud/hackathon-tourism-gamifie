@@ -31,7 +31,7 @@ export function JoinForm() {
             lastName: "",
             email: "",
             phone: "",
-            cv: null as any,
+            cv: undefined as File | undefined,
             website: "",
         },
         mode: "onBlur",
@@ -82,7 +82,7 @@ export function JoinForm() {
                 <CardHeader>
                     <CardTitle>Succès</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-muted-foreground">
+                <CardContent className="text-muted-foreground space-y-4">
                     <p>Votre candidature a bien été prise en compte.</p>
 
                     <div className="flex flex-wrap gap-3">
@@ -105,14 +105,12 @@ export function JoinForm() {
         );
     }
 
-    const cvFile = form.watch("cv") as unknown as File | null;
+    const cvFile = form.watch("cv") as File | undefined;
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <Card className="rounded-2xl">
-
-
                     <CardContent className="grid gap-6 md:grid-cols-2">
                         <FormField
                             control={form.control}
@@ -121,7 +119,11 @@ export function JoinForm() {
                                 <FormItem className="md:col-span-2">
                                     <FormLabel>Votre nom *</FormLabel>
                                     <FormControl>
-                                        <Input autoComplete="family-name" placeholder="Votre nom" {...field} />
+                                        <Input
+                                            autoComplete="family-name"
+                                            placeholder="Votre nom"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -135,7 +137,11 @@ export function JoinForm() {
                                 <FormItem className="md:col-span-2">
                                     <FormLabel>Votre prénom *</FormLabel>
                                     <FormControl>
-                                        <Input autoComplete="given-name" placeholder="Votre prénom" {...field} />
+                                        <Input
+                                            autoComplete="given-name"
+                                            placeholder="Votre prénom"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -149,7 +155,12 @@ export function JoinForm() {
                                 <FormItem className="md:col-span-2">
                                     <FormLabel>Votre email *</FormLabel>
                                     <FormControl>
-                                        <Input type="email" autoComplete="email" placeholder="nom@exemple.com" {...field} />
+                                        <Input
+                                            type="email"
+                                            autoComplete="email"
+                                            placeholder="nom@exemple.com"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -163,7 +174,12 @@ export function JoinForm() {
                                 <FormItem className="md:col-span-2">
                                     <FormLabel>Votre téléphone *</FormLabel>
                                     <FormControl>
-                                        <Input inputMode="tel" autoComplete="tel" placeholder="06 00 00 00 00" {...field} />
+                                        <Input
+                                            inputMode="tel"
+                                            autoComplete="tel"
+                                            placeholder="06 00 00 00 00"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -182,7 +198,11 @@ export function JoinForm() {
                                         {/* Champ lecture seule (nom du fichier) */}
                                         <Input
                                             readOnly
-                                            value={cvFile ? cvFile.name : "Sélectionnez votre plus beau CV"}
+                                            value={
+                                                cvFile
+                                                    ? cvFile.name
+                                                    : "Sélectionnez votre plus beau CV"
+                                            }
                                             className="cursor-default"
                                         />
 
@@ -194,17 +214,25 @@ export function JoinForm() {
                                                 className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
                                                 onChange={(e) => {
                                                     const file = e.target.files?.[0] ?? null;
-                                                    form.setValue("cv", file as any, { shouldValidate: true });
+                                                    form.setValue("cv", file ?? undefined, {
+                                                        shouldValidate: true,
+                                                    });
                                                 }}
                                             />
-                                            <Button type="button" variant="secondary" className="h-full">
-                                                Browse
+                                            <Button
+                                                type="button"
+                                                variant="secondary"
+                                                className="h-full"
+                                            >
+                                                Parcourir
                                             </Button>
                                         </div>
                                     </div>
 
-                                    <p className="text-xs text-muted-foreground">
-                                        {cvFile ? "1/1 files uploaded" : "0/1 files uploaded"}
+                                    <p className="text-muted-foreground text-xs">
+                                        {cvFile
+                                            ? "1/1 fichier sélectionné"
+                                            : "Aucun fichier sélectionné"}
                                     </p>
 
                                     <FormMessage />
@@ -222,7 +250,7 @@ export function JoinForm() {
                         />
 
                         {serverError ? (
-                            <p className="text-sm font-medium text-destructive md:col-span-2">
+                            <p className="text-destructive text-sm font-medium md:col-span-2">
                                 {serverError}
                             </p>
                         ) : null}

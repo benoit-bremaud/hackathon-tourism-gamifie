@@ -36,8 +36,8 @@ export function ContactDialog({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent
                 className={cn(
-                    "w-[96vw] max-w-[900px] sm:max-w-[900px] overflow-hidden p-0",
-                    className
+                    "w-[96vw] max-w-[900px] overflow-hidden p-0 sm:max-w-[900px]",
+                    className,
                 )}
             >
                 <div className="grid min-h-[520px] md:grid-cols-2">
@@ -55,20 +55,23 @@ export function ContactDialog({
 
                     <div
                         className={cn(
-                            "p-8 md:p-10 flex flex-col justify-center",
-                            !imageSrc && "md:col-span-2"
+                            "flex flex-col justify-center p-8 md:p-10",
+                            !imageSrc && "md:col-span-2",
                         )}
                     >
                         <DialogHeader>
-                            <DialogTitle className="text-center text-4xl font-semibold tracking-tight text-primary">
+                            <DialogTitle className="text-primary text-center text-4xl font-semibold tracking-tight">
                                 {title}
                             </DialogTitle>
                         </DialogHeader>
 
-                        <div className="mt-6 space-y-3 text-xl text-center ">
+                        <div className="mt-6 space-y-3 text-center text-xl">
                             <div className="flex justify-center gap-2">
                                 <span className="font-semibold">Mail :</span>
-                                <Link href={mailHref} className="text-primary underline-offset-4 hover:underline">
+                                <Link
+                                    href={mailHref}
+                                    className="text-primary underline-offset-4 hover:underline"
+                                >
                                     {email}
                                 </Link>
                             </div>

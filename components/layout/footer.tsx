@@ -19,8 +19,7 @@ const COLUMNS: readonly Column[] = [
     {
         title: "Cabinet Eurossur",
         orias: "n° ORIAS 07001927 - www.orias.fr",
-        body:
-            "Cabinet de courtage expert de l’assurance des appareils auditifs depuis 1999. Service sinistre 100% en France, certifié par les assureurs.",
+        body: "Cabinet de courtage expert de l’assurance des appareils auditifs depuis 1999. Service sinistre 100% en France, certifié par les assureurs.",
         linkLabel: "Mentions légales et médiateur",
         linkHref: "/mentions-legales",
         linkTone: "text-blue-300 hover:text-blue-200",
@@ -31,8 +30,7 @@ const COLUMNS: readonly Column[] = [
     {
         title: "Cabinet Mark’assur",
         orias: "n° ORIAS 09-049-435 (www.orias.fr)",
-        body:
-            "Créé en 2009, Mark’assur est un courtier spécialiste dans la protection de l’aide auditive et de l’audioprothésiste.",
+        body: "Créé en 2009, Mark’assur est un courtier spécialiste dans la protection de l’aide auditive et de l’audioprothésiste.",
         linkLabel: "Mentions légales et médiateur",
         linkHref: "/mentions-legales",
         linkTone: "text-white/80 hover:text-white",
@@ -42,8 +40,7 @@ const COLUMNS: readonly Column[] = [
     {
         title: "Cabinet Rossard Courtage",
         orias: "",
-        body:
-            "Rossard Courtage est un cabinet de courtage en assurance pour les entreprises et les professionnels créé en 2001. Entreprise familiale et à l’écoute des clients, Rossard Courtage s’engage à apporter la meilleure offre et à toujours défendre les intérêts auprès des compagnies d’assurances partenaires.",
+        body: "Rossard Courtage est un cabinet de courtage en assurance pour les entreprises et les professionnels créé en 2001. Entreprise familiale et à l’écoute des clients, Rossard Courtage s’engage à apporter la meilleure offre et à toujours défendre les intérêts auprès des compagnies d’assurances partenaires.",
         linkLabel: "Mentions légales et médiateur",
         linkHref: "/mentions-legales",
         linkTone: "text-yellow-300 hover:text-yellow-200",
@@ -73,13 +70,7 @@ function prettyLabel(kind: "phone" | "mail" | "address", key: string) {
     return key;
 }
 
-function ContactList({
-    kind,
-    data,
-}: {
-    kind: "phone" | "mail" | "address";
-    data?: ContactMap;
-}) {
+function ContactList({ kind, data }: { kind: "phone" | "mail" | "address"; data?: ContactMap }) {
     if (!data) return null;
 
     const entries = Object.entries(data).filter(([, v]) => Boolean(v?.trim()));

@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     title: "Nous rejoindre",
     description:
         "Vous êtes un professionnel de l'audioprothèse et souhaitez offrir à vos clients une protection complète ? Rejoignez-nous pour bénéficier de nos solutions d'assurance adaptées à votre activité.",
+    openGraph: {
+        title: "Rejoindre ProtecAudio",
+        description:
+            "Rejoignez l'équipe ProtecAudio et participez à une aventure professionnelle dans l'assurance audioprothèse.",
+    },
 };
 
 const c = CONTACTS.protecaudio;
@@ -42,20 +47,22 @@ export default function JoinPage() {
                                 <span className="text-primary">Protec’audio</span> c’est :
                             </h1>
 
-                            <div className="space-y-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                            <div className="text-muted-foreground space-y-3 text-sm leading-relaxed md:text-base">
                                 <p>
-                                    Participer à une aventure professionnelle motivante et développer
-                                    votre expertise dans un environnement en pleine expansion.
+                                    Participer à une aventure professionnelle motivante et
+                                    développer votre expertise dans un environnement en pleine
+                                    expansion.
                                 </p>
                                 <p>
-                                    Choisir un métier dont vous pouvez être fier, avec un engagement pour
-                                    chaque client : proposer la meilleure solution pour le protéger.
+                                    Choisir un métier dont vous pouvez être fier, avec un engagement
+                                    pour chaque client : proposer la meilleure solution pour le
+                                    protéger.
                                 </p>
                                 <p>
-                                    Acquérir une solide expérience commerciale “phygitale” : l’efficacité
-                                    du face à face alliée aux apports du digital et de l’IA. Bénéficier de
-                                    la force d’un groupe qui vous offre des possibilités de mobilité
-                                    géographique et/ou professionnelle.
+                                    Acquérir une solide expérience commerciale “phygitale” :
+                                    l’efficacité du face à face alliée aux apports du digital et de
+                                    l’IA. Bénéficier de la force d’un groupe qui vous offre des
+                                    possibilités de mobilité géographique et/ou professionnelle.
                                 </p>
                             </div>
                         </div>

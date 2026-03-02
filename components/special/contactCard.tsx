@@ -29,7 +29,7 @@ export function ContactCard({
     return (
         <Card className={cn("rounded-2xl shadow-sm", className)}>
             <CardContent className="flex flex-col items-center gap-5 p-8 text-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <div className="bg-primary/10 text-primary flex h-14 w-14 items-center justify-center rounded-full">
                     <LucideIcon icon={icon} className="h-7 w-7" />
                 </div>
 

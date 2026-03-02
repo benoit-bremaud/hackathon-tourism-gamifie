@@ -71,14 +71,14 @@ export function InfoCard({
                 </div>
 
                 {/* Trait */}
-                <div className="my-6 h-px w-full bg-border" />
+                <div className="bg-border my-6 h-px w-full" />
 
                 {/* Titre */}
-                <h2 className="text-2xl font-semibold tracking-tight text-primary">{title}</h2>
+                <h2 className="text-primary text-2xl font-semibold tracking-tight">{title}</h2>
 
                 {/* Phone */}
                 <div className="mt-6 flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
+                    <div className="bg-foreground text-background flex h-11 w-11 items-center justify-center rounded-full">
                         <LucideIcon icon={phoneIcon ?? Phone} className="h-5 w-5" />
                     </div>
 
@@ -90,13 +90,13 @@ export function InfoCard({
                         >
                             {phone}
                         </Link>
-                        {hours ? <p className="text-sm text-muted-foreground">{hours}</p> : null}
+                        {hours ? <p className="text-muted-foreground text-sm">{hours}</p> : null}
                     </div>
                 </div>
 
                 {/* Email */}
                 <div className="mt-6 flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
+                    <div className="bg-foreground text-background flex h-11 w-11 items-center justify-center rounded-full">
                         <LucideIcon icon={emailIcon ?? Mail} className="h-5 w-5" />
                     </div>
 
@@ -113,7 +113,7 @@ export function InfoCard({
 
                 {/* Description */}
                 {description ? (
-                    <p className="mt-6 leading-relaxed text-muted-foreground">{description}</p>
+                    <p className="text-muted-foreground mt-6 leading-relaxed">{description}</p>
                 ) : null}
             </CardContent>
         </Card>

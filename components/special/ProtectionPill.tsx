@@ -75,7 +75,7 @@ const GROUPS: Group[] = [
 
 function Chip({ children }: { children: React.ReactNode }) {
     return (
-        <span className="inline-flex items-center rounded-full border-2 border-primary/30 bg-white hover:bg-accent px-5 py-2 text-sm font-semibold text-foreground">
+        <span className="border-primary/30 hover:bg-accent text-foreground inline-flex items-center rounded-full border-2 bg-white px-5 py-2 text-sm font-semibold">
             {children}
         </span>
     );
@@ -84,7 +84,7 @@ function Chip({ children }: { children: React.ReactNode }) {
 function GroupBlock({ title, subtitle, items, icon }: Group) {
     return (
         <div className="space-y-5">
-            <div className="flex items-center gap-4 rounded-2xl bg-primary px-6 py-5 shadow-sm">
+            <div className="bg-primary flex items-center gap-4 rounded-2xl px-6 py-5 shadow-sm">
                 {/* Icône */}
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20">
                     <LucideIcon icon={icon} className="h-8 w-8 text-white" />

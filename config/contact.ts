@@ -5,35 +5,14 @@ export type ContactKey =
     | "customer"
     | "protecaudio"
     | "rossard"
-    | "recrutement"
-    | "placeholder"; // pour les tests, à supprimer ensuite
+    | "recrutement";
 
 export type ContactInfo = {
-    label: string;        // "Contact", "Partenaires", ...
-    phone: string;        // "02 79 02 77 28"
-    email: string;        // "contact@markassur.com"
+    label: string; // "Contact", "Partenaires", ...
+    phone: string; // "02 79 02 77 28"
+    email: string; // "contact@markassur.com"
     hours?: string;
 };
-
-/* export const PLACEHOLDER_CONTACT: ContactInfo = {
-    label: "Contact",
-    phone: "XX XX XX XX XX",
-    email: "placeholder@example.com",
-    hours: "Du lundi au vendredi de 9h à 18h.",
-};
-*/
-
-// export const CONTACTS: Record<ContactKey, ContactInfo> = {
-//     default: PLACEHOLDER_CONTACT,
-//     partner: PLACEHOLDER_CONTACT,
-//     becomePartner: PLACEHOLDER_CONTACT,
-//     customer: PLACEHOLDER_CONTACT,
-//     protecaudio: PLACEHOLDER_CONTACT,
-//     rossard: PLACEHOLDER_CONTACT,
-//     placeholder: PLACEHOLDER_CONTACT,
-// };
-
-// à activer une fois les data des contacts reçus
 
 export const CONTACTS: Record<ContactKey, ContactInfo> = {
     default: {
@@ -64,18 +43,13 @@ export const CONTACTS: Record<ContactKey, ContactInfo> = {
     },
     rossard: {
         label: "Rossard Assurances",
-        phone: "02 00 00 00 00",
+        phone: "02 00 00 00 00", // TODO: remplacer par le vrai numéro
         email: "contact@rossard-assurances.fr",
     },
     recrutement: {
         label: "Recrutement",
-        email: "recrutement@protec.test",
+        email: "recrutement@protec.test", // TODO: remplacer par la vraie adresse
         phone: "—",
-    },
-    placeholder: {
-        label: "placeholder",
-        phone: "06 00 00 00 00",
-        email: "placeholder@email.com",
     },
 };
 

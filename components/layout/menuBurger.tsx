@@ -54,13 +54,13 @@ export function MenuBurger() {
                 </SheetHeader>
 
                 <div className="mt-6 space-y-4">
-                    <nav className="grid gap-2">
+                    <nav aria-label="Menu mobile" className="grid gap-2">
                         {NAV_ITEMS.map((item) => (
                             <Link
                                 key={item.href}
                                 href={item.href}
                                 onClick={() => setOpen(false)}
-                                className="rounded-md px-3 py-2 text-base text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                className="text-foreground hover:bg-muted focus-visible:ring-ring rounded-md px-3 py-2 text-base focus-visible:ring-2 focus-visible:outline-none"
                             >
                                 {item.label}
                             </Link>
@@ -69,7 +69,7 @@ export function MenuBurger() {
 
                     <Separator />
 
-                    <p className="text-xs text-muted-foreground">Réponse sous 48h ouvrées.</p>
+                    <p className="text-muted-foreground text-xs">Réponse sous 48h ouvrées.</p>
                 </div>
             </SheetContent>
         </Sheet>

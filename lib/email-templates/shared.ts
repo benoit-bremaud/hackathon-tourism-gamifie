@@ -6,7 +6,7 @@ export type EmailContent = {
 
 export type BrandConfig = {
     brandName?: string; // ex: "ProtecAudio"
-    logoUrl?: string;   // ex: https://.../logo.png (public HTTPS)
+    logoUrl?: string; // ex: https://.../logo.png (public HTTPS)
     footerText?: string; // ex: "Envoyé depuis le site..."
 };
 
@@ -42,14 +42,14 @@ export function kvTable(rows: Array<{ label: string; value: string }>) {
     return `
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px;color:#111827;">
     ${safe
-            .map(
-                (r) => `
+        .map(
+            (r) => `
       <tr>
         <td style="padding:6px 0;color:#6b7280;width:180px;">${r.label}</td>
         <td style="padding:6px 0;font-weight:600;">${r.value}</td>
-      </tr>`
-            )
-            .join("")}
+      </tr>`,
+        )
+        .join("")}
   </table>`;
 }
 
@@ -66,16 +66,16 @@ export function renderEmailLayout(opts: {
 
     const logo = logoUrl
         ? `<img src="${escapeHtml(logoUrl)}" alt="${escapeHtml(
-            brandName
-        )}" style="height:40px;width:auto;display:block;" />`
+              brandName,
+          )}" style="height:40px;width:auto;display:block;" />`
         : `<div style="font-size:18px;font-weight:800;color:#111827;">${escapeHtml(
-            brandName
-        )}</div>`;
+              brandName,
+          )}</div>`;
 
     const subtitleHtml = opts.subtitle
         ? `<div style="margin-top:6px;font-size:13px;color:#6b7280;">${escapeHtml(
-            opts.subtitle
-        )}</div>`
+              opts.subtitle,
+          )}</div>`
         : "";
 
     return `<!doctype html>
@@ -105,8 +105,8 @@ export function renderEmailLayout(opts: {
               <td style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);">
                 <div style="padding:22px 22px 10px 22px;">
                   <div style="font-size:18px;font-weight:800;color:#111827;">${escapeHtml(
-        opts.title
-    )}</div>
+                      opts.title,
+                  )}</div>
                   ${subtitleHtml}
                 </div>
 

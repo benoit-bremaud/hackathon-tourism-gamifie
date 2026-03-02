@@ -1,9 +1,10 @@
-import {NextResponse} from "next/server";
-import {z} from "zod";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
-import {getTransport} from "@/lib/mailer";
-import {CONTACTS} from "@/config/contact";
-import {buildJoinEmail} from "@/lib/email-templates/join";
+import { getTransport } from "@/lib/mailer";
+import { rateLimit } from "@/lib/rate-limit";
+import { CONTACTS } from "@/config/contact";
+import { buildJoinEmail } from "@/lib/email-templates/join";
 
 export const runtime = "nodejs";
 
@@ -32,8 +33,24 @@ function extFromName(name: string) {
     return idx >= 0 ? name.slice(idx + 1).toLowerCase() : "";
 }
 
+function sanitizeFilename(name: string): string {
+    return name
+        .replace(/\.\./g, "")
+        .replace(/\0/g, "")
+        .replace(/[^a-zA-Z0-9._-]/g, "_")
+        .slice(0, 100);
+}
+
 export async function POST(req: Request) {
     try {
+        const { ok: allowed } = rateLimit(req, { limit: 3, windowMs: 60_000 });
+        if (!allowed) {
+            return NextResponse.json(
+                { ok: false, error: "Trop de requêtes. Réessayez dans une minute." },
+                { status: 429 },
+            );
+        }
+
         const formData = await req.formData();
 
         const raw = {
@@ -47,24 +64,24 @@ export async function POST(req: Request) {
         const parsed = JoinSchema.safeParse(raw);
         if (!parsed.success) {
             return NextResponse.json(
-                {ok: false, error: "Champs invalides.", details: parsed.error.flatten()},
-                {status: 400}
+                { ok: false, error: "Champs invalides.", details: parsed.error.flatten() },
+                { status: 400 },
             );
         }
 
         if (parsed.data.website.trim().length > 0) {
-            return NextResponse.json({ok: true});
+            return NextResponse.json({ ok: true });
         }
 
         const cv = formData.get("cv");
         if (!(cv instanceof File)) {
-            return NextResponse.json({ok: false, error: "CV requis."}, {status: 400});
+            return NextResponse.json({ ok: false, error: "CV requis." }, { status: 400 });
         }
 
         if (cv.size > MAX_CV_BYTES) {
             return NextResponse.json(
-                {ok: false, error: "Fichier trop lourd (max 5MB)."},
-                {status: 400}
+                { ok: false, error: "Fichier trop lourd (max 5MB)." },
+                { status: 400 },
             );
         }
 
@@ -72,26 +89,27 @@ export async function POST(req: Request) {
         const allowedExt = ["pdf", "doc", "docx"];
         if (!allowedExt.includes(ext)) {
             return NextResponse.json(
-                {ok: false, error: "Format invalide (PDF, DOC, DOCX)."},
-                {status: 400}
+                { ok: false, error: "Format invalide (PDF, DOC, DOCX)." },
+                { status: 400 },
             );
         }
 
-        if (!AllowedMime.includes(cv.type as any)) {
+        if (!AllowedMime.includes(cv.type as (typeof AllowedMime)[number])) {
             // tolérance: certains navigateurs peuvent envoyer un type vide
             if (cv.type && cv.type.trim().length > 0) {
                 return NextResponse.json(
-                    {ok: false, error: "Type de fichier invalide."},
-                    {status: 400}
+                    { ok: false, error: "Type de fichier invalide." },
+                    { status: 400 },
                 );
             }
         }
 
         const toEmail = CONTACTS.recrutement.email;
 
+        const safeName = sanitizeFilename(cv.name);
         const cvBytes = Buffer.from(await cv.arrayBuffer());
         const cvMeta = {
-            filename: cv.name,
+            filename: safeName,
             sizeKb: Math.round(cv.size / 1024),
             mimeType: cv.type || undefined,
         };
@@ -108,7 +126,7 @@ export async function POST(req: Request) {
                 brandName: "ProtecAudio",
                 logoUrl: process.env.MAIL_LOGO_URL,
                 footerText: process.env.MAIL_FOOTER_TEXT,
-            }
+            },
         );
 
         const mailFrom = process.env.MAIL_FROM;
@@ -126,7 +144,7 @@ export async function POST(req: Request) {
             replyTo: parsed.data.email,
             attachments: [
                 {
-                    filename: cv.name,
+                    filename: safeName,
                     content: cvBytes,
                     contentType: cv.type || "application/octet-stream",
                     contentDisposition: "attachment",
@@ -141,8 +159,8 @@ export async function POST(req: Request) {
     } catch (err) {
         console.error("POST /api/join error:", err);
         return NextResponse.json(
-            {ok: false, error: "Erreur serveur lors de l’envoi."},
-            {status: 500}
+            { ok: false, error: "Erreur serveur lors de l’envoi." },
+            { status: 500 },
         );
     }
 }

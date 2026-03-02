@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     title: "Mentions légales",
     description:
         "Mentions légales ProtecAudio et accès aux mentions légales des cabinets partenaires.",
+    openGraph: {
+        title: "Mentions légales ProtecAudio",
+        description:
+            "Informations légales relatives à ProtecAudio et liens vers les cabinets partenaires.",
+    },
 };
 
 const PARTNERS = [
@@ -37,9 +42,10 @@ export default function MentionsLegalesPage() {
                     <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
                         Mentions légales
                     </h1>
-                    <p className="max-w-3xl text-muted-foreground">
-                        Cette page présente les informations légales relatives à ProtecAudio ainsi que les
-                        liens vers les mentions légales officielles de nos cabinets partenaires.
+                    <p className="text-muted-foreground max-w-3xl">
+                        Cette page présente les informations légales relatives à ProtecAudio ainsi
+                        que les liens vers les mentions légales officielles de nos cabinets
+                        partenaires.
                     </p>
                 </div>
 
@@ -50,14 +56,15 @@ export default function MentionsLegalesPage() {
                             <CardHeader>
                                 <CardTitle>ProtecAudio</CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-4 text-muted-foreground">
+                            <CardContent className="text-muted-foreground space-y-4">
                                 <p>
-                                    Les informations légales spécifiques à ProtecAudio seront ajoutées prochainement.
+                                    Les informations légales spécifiques à ProtecAudio seront
+                                    ajoutées prochainement.
                                 </p>
                                 <p className="text-sm">
-                                    En attendant, veuillez vous référer aux mentions légales des cabinets partenaires
-                                    ci-contre pour les informations relatives à l’édition, la médiation et
-                                    l’hébergement.
+                                    En attendant, veuillez vous référer aux mentions légales des
+                                    cabinets partenaires ci-contre pour les informations relatives à
+                                    l’édition, la médiation et l’hébergement.
                                 </p>
                             </CardContent>
                         </Card>
@@ -73,7 +80,7 @@ export default function MentionsLegalesPage() {
                                     <CardTitle className="text-base">{p.name}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-3">
-                                    <p className="text-sm text-muted-foreground">{p.note}</p>
+                                    <p className="text-muted-foreground text-sm">{p.note}</p>
 
                                     <Button asChild variant="secondary" className="w-full">
                                         <Link href={p.href} target="_blank" rel="noreferrer">
@@ -86,10 +93,11 @@ export default function MentionsLegalesPage() {
                     </div>
                 </div>
 
-                <div className="mt-10 text-sm text-muted-foreground">
+                <div className="text-muted-foreground mt-10 text-sm">
                     <p>
-                        Les liens ci-dessus renvoient vers les pages officielles des cabinets. Ces informations
-                        peuvent évoluer — en cas de doute, la page officielle du cabinet fait foi.
+                        Les liens ci-dessus renvoient vers les pages officielles des cabinets. Ces
+                        informations peuvent évoluer — en cas de doute, la page officielle du
+                        cabinet fait foi.
                     </p>
                 </div>
             </Container>

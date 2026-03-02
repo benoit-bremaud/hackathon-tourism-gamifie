@@ -42,19 +42,13 @@ const JOB_FUNCTIONS = [
     "Autre",
 ] as const;
 
-// On étend les valeurs du form côté client pour inclure le honeypot
-type ContactFormClientValues = ContactFormValues & {
-    website?: string;
-};
-
 export function ContactForm() {
     const [submitted, setSubmitted] = React.useState(false);
     const [isSending, setIsSending] = React.useState(false);
     const [serverError, setServerError] = React.useState<string | null>(null);
 
-
-    const form = useForm<ContactFormClientValues>({
-        resolver: zodResolver(contactFormSchema) as any,
+    const form = useForm<ContactFormValues>({
+        resolver: zodResolver(contactFormSchema),
         defaultValues: {
             userType: "professionnel",
             jobFunction: "",
@@ -75,7 +69,7 @@ export function ContactForm() {
 
     const userType = form.watch("userType");
 
-    async function onSubmit(values: ContactFormClientValues) {
+    async function onSubmit(values: ContactFormValues) {
         setServerError(null);
         setIsSending(true);
 
@@ -107,7 +101,7 @@ export function ContactForm() {
                 <CardHeader>
                     <CardTitle>Succès</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-muted-foreground">
+                <CardContent className="text-muted-foreground space-y-4">
                     <p>Votre demande a bien été envoyée à l’équipe.</p>
 
                     <div className="flex flex-wrap gap-3">
@@ -152,7 +146,7 @@ export function ContactForm() {
                                             {USER_TYPES.map((t) => (
                                                 <label
                                                     key={t}
-                                                    className="flex cursor-pointer items-center gap-3 rounded-xl border p-4 hover:bg-muted"
+                                                    className="hover:bg-muted flex cursor-pointer items-center gap-3 rounded-xl border p-4"
                                                 >
                                                     <RadioGroupItem value={t} />
                                                     <span className="font-medium">
@@ -307,8 +301,7 @@ export function ContactForm() {
                             render={({ field }) => (
                                 <FormItem className="md:col-span-2">
                                     <FormLabel>
-                                        Adresse{" "}
-                                        {userType === "professionnel" ? "*" : "(optionnel)"}
+                                        Adresse {userType === "professionnel" ? "*" : "(optionnel)"}
                                     </FormLabel>
                                     <FormControl>
                                         <Input placeholder="Adresse de l’entreprise" {...field} />
@@ -372,11 +365,13 @@ export function ContactForm() {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            {Object.entries(insuranceLabel).map(([value, label]) => (
-                                                <SelectItem key={value} value={value}>
-                                                    {label}
-                                                </SelectItem>
-                                            ))}
+                                            {Object.entries(insuranceLabel).map(
+                                                ([value, label]) => (
+                                                    <SelectItem key={value} value={value}>
+                                                        {label}
+                                                    </SelectItem>
+                                                ),
+                                            )}
                                         </SelectContent>
                                     </Select>
                                     <FormDescription>
@@ -418,7 +413,7 @@ export function ContactForm() {
                 />
 
                 {serverError ? (
-                    <p className="text-sm font-medium text-destructive">{serverError}</p>
+                    <p className="text-destructive text-sm font-medium">{serverError}</p>
                 ) : null}
 
                 <div className="flex flex-wrap items-center gap-3">

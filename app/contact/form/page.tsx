@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     title: "Formulaire de contact",
     description:
         "Contactez-nous pour obtenir des informations sur nos solutions d'assurance, réaliser un contrat ou déclarer un sinistre.",
+    openGraph: {
+        title: "Formulaire de contact ProtecAudio",
+        description:
+            "Remplissez notre formulaire pour obtenir un devis ou des informations sur nos solutions d'assurance.",
+    },
 };
 
 const c = CONTACTS.protecaudio;
@@ -22,7 +27,7 @@ export default function ContactFormPage() {
                     <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
                         Nous contacter
                     </h1>
-                    <p className="max-w-3xl text-muted-foreground">
+                    <p className="text-muted-foreground max-w-3xl">
                         Remplissez le formulaire, nous revenons vers vous rapidement.
                     </p>
                 </div>

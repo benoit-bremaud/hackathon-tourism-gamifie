@@ -12,11 +12,10 @@ export const joinFormSchema = z.object({
     // Upload (pour l’instant juste validation côté client)
     cv: z
         .any()
-        .refine((f) => f instanceof File || f === null, "CV requis")
         .refine((f) => f instanceof File, "Merci de joindre votre CV")
         .refine(
             (f) => (f instanceof File ? f.size <= 5 * 1024 * 1024 : true),
-            "Fichier trop lourd (max 5MB)"
+            "Fichier trop lourd (max 5MB)",
         )
         .refine((f) => {
             if (!(f instanceof File)) return true;

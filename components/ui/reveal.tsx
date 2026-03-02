@@ -58,7 +58,7 @@ export function Reveal({
                     setShown(false);
                 }
             },
-            { threshold: 0.15 }
+            { threshold: 0.15 },
         );
 
         io.observe(el);
@@ -73,14 +73,16 @@ export function Reveal({
                 reduced
                     ? undefined
                     : {
-                        transitionProperty: "opacity, transform",
-                        transitionDuration: `${duration}ms`,
-                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                        transitionDelay: `${delay}ms`,
-                        opacity: shown ? 1 : 0,
-                        transform: shown ? "translate3d(0,0,0) scale(1)" : `translate3d(0,${y}px,0) scale(0.98)`,
-                        willChange: "opacity, transform",
-                    }
+                          transitionProperty: "opacity, transform",
+                          transitionDuration: `${duration}ms`,
+                          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                          transitionDelay: `${delay}ms`,
+                          opacity: shown ? 1 : 0,
+                          transform: shown
+                              ? "translate3d(0,0,0) scale(1)"
+                              : `translate3d(0,${y}px,0) scale(0.98)`,
+                          willChange: "opacity, transform",
+                      }
             }
         >
             {children}

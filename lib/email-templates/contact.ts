@@ -1,5 +1,5 @@
 import type { EmailContent, BrandConfig } from "./shared";
-import { kvTable, nl2brEscaped, renderEmailLayout } from "./shared";
+import { escapeHtml, kvTable, nl2brEscaped, renderEmailLayout } from "./shared";
 
 export type ContactEmailData = {
     insuranceLabel: string;
@@ -16,11 +16,8 @@ export type ContactEmailData = {
     message: string;
 };
 
-export function buildContactEmail(
-    data: ContactEmailData,
-    brand?: BrandConfig
-): EmailContent {
-    const subject = `[Contact] ${data.insuranceLabel} — ${data.lastName} ${data.firstName}`;
+export function buildContactEmail(data: ContactEmailData, brand?: BrandConfig): EmailContent {
+    const subject = `[Contact] ${escapeHtml(data.insuranceLabel)} — ${escapeHtml(data.lastName)} ${escapeHtml(data.firstName)}`;
 
     const text = [
         `Nouveau message via le formulaire`,
@@ -46,10 +43,10 @@ export function buildContactEmail(
     const sectionsHtml = `
     <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
       ${kvTable([
-        { label: "Assurance", value: data.insuranceLabel },
-        { label: "Vous êtes", value: data.userType },
-        { label: "Fonction", value: data.jobFunction },
-    ])}
+          { label: "Assurance", value: data.insuranceLabel },
+          { label: "Vous êtes", value: data.userType },
+          { label: "Fonction", value: data.jobFunction },
+      ])}
     </div>
 
     <div style="height:14px;"></div>
@@ -57,11 +54,11 @@ export function buildContactEmail(
     <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
       <div style="font-size:14px;font-weight:800;color:#111827;margin-bottom:10px;">Coordonnées</div>
       ${kvTable([
-        { label: "Nom", value: data.lastName },
-        { label: "Prénom", value: data.firstName },
-        { label: "Email", value: data.email },
-        { label: "Téléphone", value: data.phone },
-    ])}
+          { label: "Nom", value: data.lastName },
+          { label: "Prénom", value: data.firstName },
+          { label: "Email", value: data.email },
+          { label: "Téléphone", value: data.phone },
+      ])}
     </div>
 
     <div style="height:14px;"></div>
@@ -69,10 +66,10 @@ export function buildContactEmail(
     <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
       <div style="font-size:14px;font-weight:800;color:#111827;margin-bottom:10px;">Entreprise</div>
       ${kvTable([
-        { label: "Raison sociale", value: data.companyName || "-" },
-        { label: "Adresse", value: data.companyAddress || "-" },
-        { label: "CP / Ville", value: `${data.postalCode} ${data.city}` },
-    ])}
+          { label: "Raison sociale", value: data.companyName || "-" },
+          { label: "Adresse", value: data.companyAddress || "-" },
+          { label: "CP / Ville", value: `${data.postalCode} ${data.city}` },
+      ])}
     </div>
 
     <div style="height:14px;"></div>

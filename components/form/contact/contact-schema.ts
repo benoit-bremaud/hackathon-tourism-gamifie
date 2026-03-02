@@ -26,42 +26,47 @@ export const insuranceLabel: Record<InsuranceType, string> = {
 const phoneRegex = /^(\+?\d{1,3}[\s.-]?)?\d[\d\s().-]*\d$/;
 const postalCodeFR = /^\d{5}$/;
 
-export const contactFormSchema = z.object({
-    userType: z.enum(USER_TYPES),
+export const contactFormSchema = z
+    .object({
+        userType: z.enum(USER_TYPES),
 
-    // Identité
-    jobFunction: z.string().min(1, "Fonction requise"),
-    firstName: z.string().min(2, "Prénom requis"),
-    lastName: z.string().min(2, "Nom requis"),
-    email: z.string().email("Email invalide"),
-    phone: z.string().min(6, "Téléphone requis").regex(phoneRegex, "Téléphone invalide"),
+        // Identité
+        jobFunction: z.string().min(1, "Fonction requise"),
+        firstName: z.string().min(2, "Prénom requis"),
+        lastName: z.string().min(2, "Nom requis"),
+        email: z.string().email("Email invalide"),
+        phone: z.string().min(6, "Téléphone requis").regex(phoneRegex, "Téléphone invalide"),
 
-    // Entreprise (optionnelle si particulier)
-    companyName: z.string().optional(),
-    companyAddress: z.string().optional(),
-    postalCode: z.string().regex(postalCodeFR, "Code postal invalide (5 chiffres)"),
-    city: z.string().min(2, "Ville requise"),
+        // Entreprise (optionnelle si particulier)
+        companyName: z.string().optional(),
+        companyAddress: z.string().optional(),
+        postalCode: z.string().regex(postalCodeFR, "Code postal invalide (5 chiffres)"),
+        city: z.string().min(2, "Ville requise"),
 
-    // Besoin
-    insuranceType: z.enum(INSURANCE_TYPES),
-    message: z.string().min(10, "Décrivez votre demande (10 caractères min)").max(2000),
-}).superRefine((data, ctx) => {
-    if (data.userType === "professionnel") {
-        if (!data.companyName || data.companyName.trim().length < 2) {
-            ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                path: ["companyName"],
-                message: "Raison sociale requise",
-            });
+        // Besoin
+        insuranceType: z.enum(INSURANCE_TYPES),
+        message: z.string().min(10, "Décrivez votre demande (10 caractères min)").max(2000),
+
+        // Honeypot anti-bot
+        website: z.string().optional(),
+    })
+    .superRefine((data, ctx) => {
+        if (data.userType === "professionnel") {
+            if (!data.companyName || data.companyName.trim().length < 2) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    path: ["companyName"],
+                    message: "Raison sociale requise",
+                });
+            }
+            if (!data.companyAddress || data.companyAddress.trim().length < 5) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    path: ["companyAddress"],
+                    message: "Adresse de l’entreprise requise",
+                });
+            }
         }
-        if (!data.companyAddress || data.companyAddress.trim().length < 5) {
-            ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                path: ["companyAddress"],
-                message: "Adresse de l’entreprise requise",
-            });
-        }
-    }
-});
+    });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;

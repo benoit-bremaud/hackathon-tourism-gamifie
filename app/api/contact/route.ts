@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
 import { getTransport } from "@/lib/mailer";
+import { rateLimit } from "@/lib/rate-limit";
 import { CONTACTS, type ContactKey } from "@/config/contact";
 import {
     contactFormSchema,
@@ -21,19 +21,23 @@ const INSURANCE_EMAIL: Record<InsuranceType, ContactKey> = {
     epargne_retraite: "rossard",
 };
 
-const ServerSchema = contactFormSchema.extend({
-    website: z.string().optional().default(""),
-});
-
 export async function POST(req: Request) {
     try {
+        const { ok: allowed } = rateLimit(req, { limit: 5, windowMs: 60_000 });
+        if (!allowed) {
+            return NextResponse.json(
+                { ok: false, error: "Trop de requêtes. Réessayez dans une minute." },
+                { status: 429 },
+            );
+        }
+
         const json = await req.json();
-        const parsed = ServerSchema.safeParse(json);
+        const parsed = contactFormSchema.safeParse(json);
 
         if (!parsed.success) {
             return NextResponse.json(
                 { ok: false, error: "Champs invalides.", details: parsed.error.flatten() },
-                { status: 400 }
+                { status: 400 },
             );
         }
 
@@ -65,7 +69,7 @@ export async function POST(req: Request) {
                 brandName: "ProtecAudio",
                 logoUrl: process.env.MAIL_LOGO_URL,
                 footerText: process.env.MAIL_FOOTER_TEXT,
-            }
+            },
         );
 
         const mailFrom = process.env.MAIL_FROM;
@@ -92,7 +96,7 @@ export async function POST(req: Request) {
         console.error("POST /api/contact error:", err);
         return NextResponse.json(
             { ok: false, error: "Erreur serveur lors de l’envoi." },
-            { status: 500 }
+            { status: 500 },
         );
     }
 }

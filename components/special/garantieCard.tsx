@@ -10,18 +10,13 @@ type GarantieCardProps = {
     headerClassName?: string;
 };
 
-export function GarantieCard({
-    title,
-    body,
-    icon,
-    headerClassName,
-}: GarantieCardProps) {
+export function GarantieCard({ title, body, icon, headerClassName }: GarantieCardProps) {
     return (
         <Card className="overflow-hidden rounded-2xl p-0">
             <CardHeader className="p-0">
-                <div className={`relative h-24 bg-primary ${headerClassName ?? ""}`}>
+                <div className={`bg-primary relative h-24 ${headerClassName ?? ""}`}>
                     {/* bandeau plus clair */}
-                    <div className="absolute bottom-0 left-0 h-2 w-full bg-accent" />
+                    <div className="bg-accent absolute bottom-0 left-0 h-2 w-full" />
 
                     {/* Icône */}
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -40,7 +35,7 @@ export function GarantieCard({
                 </div>
             </CardHeader>
 
-            <CardContent className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">
+            <CardContent className="text-muted-foreground px-6 pb-6 text-sm leading-relaxed">
                 {body}
             </CardContent>
         </Card>

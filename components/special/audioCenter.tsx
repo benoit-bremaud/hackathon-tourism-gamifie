@@ -20,8 +20,7 @@ const ITEMS: Item[] = [
     },
     {
         title: "Différencier",
-        description:
-            "Proposer un service de qualité pour se distinguer de la concurrence.",
+        description: "Proposer un service de qualité pour se distinguer de la concurrence.",
         Icon: MessageCircle,
     },
 ];
@@ -36,7 +35,7 @@ function IconBadge({ Icon }: { Icon: Item["Icon"] }) {
 
 export function AudioCentersBlock() {
     return (
-        <section className="relative overflow-hidden  py-10 md:py-14">
+        <section className="relative overflow-hidden py-10 md:py-14">
             {/* “Bulles” décoratives à droite */}
             {/* <div className="pointer-events-none absolute right-[-120px] top-[-80px] h-[260px] w-[260px] rounded-full bg-indigo-100/55" />
             <div className="pointer-events-none absolute right-[60px] top-[-60px] h-[220px] w-[220px] rounded-full bg-indigo-100/45" />
