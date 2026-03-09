@@ -1,55 +1,45 @@
 export type ContactKey =
     | "default"
-    | "partner"
-    | "becomePartner"
-    | "customer"
-    | "protecaudio"
-    | "rossard"
-    | "recrutement";
+    | "sales"
+    | "support"
+    | "partnership"
+    | "recruitment";
 
 export type ContactInfo = {
-    label: string; // "Contact", "Partenaires", ...
-    phone: string; // "02 79 02 77 28"
-    email: string; // "contact@markassur.com"
+    label: string;
+    phone: string;
+    email: string;
     hours?: string;
 };
 
 export const CONTACTS: Record<ContactKey, ContactInfo> = {
     default: {
         label: "Contact",
-        phone: "02 79 02 77 28",
-        email: "contact@markassur.com",
+        phone: "01 23 45 67 89",
+        email: "contact@example.com",
         hours: "Du lundi au vendredi de 9h à 18h.",
     },
-    partner: {
-        label: "Partenaires",
-        phone: "02 79 02 77 28",
-        email: "partenaires@markassur.com",
+    sales: {
+        label: "Commercial",
+        phone: "01 23 45 67 89",
+        email: "sales@example.com",
+        hours: "Du lundi au vendredi de 9h à 18h.",
     },
-    becomePartner: {
-        label: "Devenir partenaire",
-        phone: "02 79 02 77 28",
-        email: "devenir@markassur.com",
+    support: {
+        label: "Support",
+        phone: "01 23 45 67 89",
+        email: "support@example.com",
+        hours: "Du lundi au vendredi de 9h à 18h.",
     },
-    customer: {
-        label: "Contact",
-        phone: "02 79 02 77 28",
-        email: "contact@markassur.com",
+    partnership: {
+        label: "Partenariats",
+        phone: "01 23 45 67 89",
+        email: "partnership@example.com",
     },
-    protecaudio: {
-        label: "ProtecAudio",
-        phone: "09 80 08 50 47",
-        email: "contact@protecaudio.fr",
-    },
-    rossard: {
-        label: "Rossard Assurances",
-        phone: "02 00 00 00 00", // TODO: remplacer par le vrai numéro
-        email: "contact@rossard-assurances.fr",
-    },
-    recrutement: {
+    recruitment: {
         label: "Recrutement",
-        email: "recrutement@protec.test", // TODO: remplacer par la vraie adresse
-        phone: "—",
+        phone: "01 23 45 67 89",
+        email: "recruitment@example.com",
     },
 };
 

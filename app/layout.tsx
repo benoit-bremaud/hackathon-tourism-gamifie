@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer";
 import { ParallaxBackgroundClient } from "@/components/layout/parallaxBackgroundClient";
 import { Poppins, Quicksand } from "next/font/google";
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -20,42 +21,56 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
     title: {
-        default: "ProtecAudio",
-        template: "%s | ProtecAudio",
+        default: siteConfig.name,
+        template: `%s | ${siteConfig.name}`,
     },
-    description:
-        "ProtecAudio accompagne les audioprothésistes avec des solutions d'assurance et de protection adaptées.",
-    metadataBase: new URL("https://protecaudio.fr"),
+    description: siteConfig.description,
+    metadataBase: new URL(siteConfig.url),
     openGraph: {
         type: "website",
-        locale: "fr_FR",
-        siteName: "ProtecAudio",
-        images: [{ url: "/logo-transparent.png", width: 1200, height: 630 }],
+        locale: siteConfig.locale,
+        siteName: siteConfig.name,
+        title: siteConfig.name,
+        description: siteConfig.description,
+        images: [
+            {
+                url: siteConfig.ogImage,
+                width: 1200,
+                height: 630,
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
+        title: siteConfig.name,
+        description: siteConfig.description,
+        images: [siteConfig.ogImage],
     },
 };
 
 const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "ProtecAudio",
-    url: "https://protecaudio.fr",
-    logo: "https://protecaudio.fr/logo-transparent.png",
-    description:
-        "ProtecAudio accompagne les audioprothésistes avec des solutions d'assurance et de protection adaptées.",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: siteConfig.logo,
+    description: siteConfig.description,
     contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+33980085047",
+        telephone: "+33123456789",
         contactType: "customer service",
         availableLanguage: "French",
+        email: siteConfig.contactEmail,
     },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="fr" className={`${poppins.className} ${quicksand.variable}`} suppressHydrationWarning>
+        <html
+            lang="fr"
+            className={`${poppins.className} ${quicksand.variable}`}
+            suppressHydrationWarning
+        >
             <head>
                 <script
                     type="application/ld+json"

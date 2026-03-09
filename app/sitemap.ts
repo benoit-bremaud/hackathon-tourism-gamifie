@@ -1,51 +1,34 @@
-// app/sitemap.ts
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const base = "https://protecaudio.fr";
+    const base = siteConfig.url;
+    const lastModified = new Date();
+
     return [
-        { url: `${base}/`, lastModified: new Date(), changeFrequency: "monthly", priority: 1.0 },
         {
-            url: `${base}/garantie`,
-            lastModified: new Date(),
+            url: `${base}/`,
+            lastModified,
             changeFrequency: "monthly",
-            priority: 0.9,
+            priority: 1.0,
         },
         {
-            url: `${base}/protection`,
-            lastModified: new Date(),
+            url: `${base}/test`,
+            lastModified,
             changeFrequency: "monthly",
-            priority: 0.9,
-        },
-        {
-            url: `${base}/contact`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
             priority: 0.8,
         },
         {
-            url: `${base}/contact/form`,
-            lastModified: new Date(),
+            url: `${base}/contact`,
+            lastModified,
             changeFrequency: "yearly",
             priority: 0.7,
         },
         {
-            url: `${base}/appeler-agence`,
-            lastModified: new Date(),
+            url: `${base}/contact/form`,
+            lastModified,
             changeFrequency: "yearly",
             priority: 0.6,
-        },
-        {
-            url: `${base}/join`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
-            url: `${base}/mentions-legales`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.3,
         },
     ];
 }

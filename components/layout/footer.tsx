@@ -1,161 +1,111 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 
-type ContactMap = Record<string, string>;
-
-type Column = {
+type FooterColumn = {
     title: string;
-    orias?: string;
-    oriasHref?: string;
     body: string;
-    linkLabel: string;
-    linkHref: string;
-    linkTone: string;
-    phone?: ContactMap;
-    mail?: ContactMap;
-    address?: ContactMap;
+    phone?: string;
+    email?: string;
+    address?: string;
 };
 
-const COLUMNS: readonly Column[] = [
+const COLUMNS: readonly FooterColumn[] = [
     {
-        title: "Cabinet Eurossur",
-        orias: "n° ORIAS 07-001-927",
-        oriasHref: "https://www.orias.fr/home/showIntermediaire/422495226",
-        body: "Cabinet de courtage expert de l’assurance des appareils auditifs depuis 1999. Service sinistre 100% en France, certifié par les assureurs.",
-        linkLabel: "Mentions légales et médiateur",
-        linkHref: "/mentions-legales",
-        linkTone: "text-blue-300 hover:text-blue-200",
-        phone: { standard: "05 56 79 01 10" },
-        mail: { email: "contact@eurossur.fr" },
-        address: { adresse: "74 rue Georges Bonnac Tour 6 33000 Bordeaux" },
+        title: "Entreprise",
+        body: "Ajoutez ici une courte présentation de l’entreprise, de l’activité ou du positionnement du site.",
+        phone: "01 23 45 67 89",
+        email: "contact@example.com",
+        address: "12 rue de l'exemple, 75000 Paris",
     },
     {
-        title: "Cabinet Mark’assur",
-        orias: "n° ORIAS 09-049-435",
-        oriasHref: "https://www.orias.fr/home/showIntermediaire/510669823",
-        body: "Créé en 2009, Mark’assur est un courtier spécialiste dans la protection de l’aide auditive et de l’audioprothésiste.",
-        linkLabel: "Mentions légales et médiateur",
-        linkHref: "/mentions-legales",
-        linkTone: "text-white/80 hover:text-white",
-        phone: { gestion: "02 79 02 77 28", commercial: "02 79 02 77 27" },
-        mail: { email: "contact@markassur.com" },
+        title: "Contact",
+        body: "Utilisez cette colonne pour afficher les informations de contact principales ou des détails utiles.",
+        phone: "01 23 45 67 89",
+        email: "support@example.com",
     },
     {
-        title: "Cabinet Rossard Courtage",
-        orias: "",
-        oriasHref: "",
-        body: "Rossard Courtage est un cabinet de courtage en assurance pour les entreprises et les professionnels créé en 2001. Entreprise familiale et à l’écoute des clients, Rossard Courtage s’engage à apporter la meilleure offre et à toujours défendre les intérêts auprès des compagnies d’assurances partenaires.",
-        linkLabel: "Mentions légales et médiateur",
-        linkHref: "/mentions-legales",
-        linkTone: "text-yellow-300 hover:text-yellow-200",
-        phone: { standard: "02 79 02 77 27" },
+        title: "Informations",
+        body: "Cette zone peut accueillir des mentions utiles, une description complémentaire ou d’autres liens importants.",
+        email: "hello@example.com",
     },
 ] as const;
 
 function normalizePhone(phone: string) {
-    // tel: nécessite souvent sans espaces
     return phone.replace(/[^\d+]/g, "");
-}
-
-function prettyLabel(kind: "phone" | "mail" | "address", key: string) {
-    const k = key.toLowerCase();
-    if (kind === "phone") {
-        if (k.includes("gestion")) return "Gestion";
-        if (k.includes("commercial")) return "Commercial";
-        if (k.includes("standard") || k.includes("default")) return "Téléphone";
-        return key;
-    }
-    if (kind === "mail") {
-        if (k.includes("email") || k.includes("default")) return "Email";
-        return key;
-    }
-    // address
-    if (k.includes("adresse") || k.includes("default")) return "Adresse";
-    return key;
-}
-
-function ContactList({ kind, data }: { kind: "phone" | "mail" | "address"; data?: ContactMap }) {
-    if (!data) return null;
-
-    const entries = Object.entries(data).filter(([, v]) => Boolean(v?.trim()));
-    if (entries.length === 0) return null;
-
-    return (
-        <div className="space-y-1">
-            {entries.map(([key, value]) => {
-                const label = prettyLabel(kind, key);
-
-                let href: string | null = null;
-                if (kind === "phone") href = `tel:${normalizePhone(value)}`;
-                if (kind === "mail") href = `mailto:${value}`;
-                // address => pas de href par défaut (tu peux ajouter maps: plus tard)
-
-                return (
-                    <div key={`${kind}-${key}`} className="text-sm text-white/70">
-                        <span className="text-white/50">{label} :</span>{" "}
-                        {href ? (
-                            <a
-                                href={href}
-                                className="underline underline-offset-4 hover:text-white"
-                            >
-                                {value}
-                            </a>
-                        ) : (
-                            <span>{value}</span>
-                        )}
-                    </div>
-                );
-            })}
-        </div>
-    );
 }
 
 export function Footer() {
     return (
-        <footer className="font-heading border-t border-white/10 bg-zinc-900 text-white">
+        <footer className="border-t bg-zinc-900 text-white">
             <Container>
                 <div className="grid gap-10 py-12 md:grid-cols-3">
-                    {COLUMNS.map((col) => (
-                        <div key={col.title} className="space-y-4">
-                            <div className="space-y-1">
-                                <h3 className="text-base font-semibold">
-                                    <span className="text-white/70">Cabinet </span>
-                                    {col.title.replace("Cabinet ", "")}
-                                </h3>
+                    {COLUMNS.map((column) => (
+                        <div key={column.title} className="space-y-4">
+                            <h3 className="text-base font-semibold">{column.title}</h3>
 
-                                {col.orias ? (
-                                    col.oriasHref ? (
+                            <p className="text-sm leading-relaxed text-white/70">{column.body}</p>
+
+                            <div className="space-y-2 text-sm text-white/70">
+                                {column.phone ? (
+                                    <div>
+                                        <span className="text-white/50">Téléphone :</span>{" "}
                                         <a
-                                            href={col.oriasHref}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-xs text-white/50 underline underline-offset-2 hover:text-white/70"
+                                            href={`tel:${normalizePhone(column.phone)}`}
+                                            className="underline underline-offset-4 hover:text-white"
                                         >
-                                            {col.orias}
+                                            {column.phone}
                                         </a>
-                                    ) : (
-                                        <p className="text-xs text-white/50">{col.orias}</p>
-                                    )
+                                    </div>
+                                ) : null}
+
+                                {column.email ? (
+                                    <div>
+                                        <span className="text-white/50">Email :</span>{" "}
+                                        <a
+                                            href={`mailto:${column.email}`}
+                                            className="underline underline-offset-4 hover:text-white"
+                                        >
+                                            {column.email}
+                                        </a>
+                                    </div>
+                                ) : null}
+
+                                {column.address ? (
+                                    <div>
+                                        <span className="text-white/50">Adresse :</span>{" "}
+                                        <span>{column.address}</span>
+                                    </div>
                                 ) : null}
                             </div>
-
-                            <p className="text-sm leading-relaxed text-white/60">{col.body}</p>
-
-                            {/* Contacts */}
-                            <div className="space-y-2">
-                                <ContactList kind="phone" data={col.phone} />
-                                <ContactList kind="mail" data={col.mail} />
-                                <ContactList kind="address" data={col.address} />
-                            </div>
-
-                            <Link
-                                href={col.linkHref}
-                                className={`inline-block text-sm font-semibold underline underline-offset-4 ${col.linkTone}`}
-                            >
-                                {col.linkLabel}
-                            </Link>
                         </div>
                     ))}
+                </div>
+
+                <div className="border-t border-white/10 py-6">
+                    <div className="flex flex-col gap-3 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+                        <p>© {new Date().getFullYear()} Site Skeleton. Tous droits réservés.</p>
+
+                        <div className="flex flex-wrap gap-4">
+                            <Link
+                                href="/"
+                                className="underline underline-offset-4 hover:text-white"
+                            >
+                                Accueil
+                            </Link>
+                            <Link
+                                href="/test"
+                                className="underline underline-offset-4 hover:text-white"
+                            >
+                                Test
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="underline underline-offset-4 hover:text-white"
+                            >
+                                Contact
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </Container>
         </footer>

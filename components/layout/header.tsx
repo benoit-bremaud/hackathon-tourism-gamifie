@@ -17,44 +17,40 @@ export function Header() {
             <Container>
                 <div className="flex h-16 items-center justify-between">
                     <Link href="/" className="font-semibold tracking-tight">
-                        <Image
+                        {/* <Image
                             src="/logo-transparent.png"
                             alt="Protec'audio Logo"
                             width={120}
                             height={20}
                             className="h-auto w-auto max-w-[220px]"
                             priority={false}
-                        />
+                        /> */}
                     </Link>
 
                     <nav
                         aria-label="Navigation principale"
                         className="hidden items-center gap-6 md:flex"
                     >
-                        <NavLink
+                        <Link
                             href="/"
-                            className="text-muted-foreground hover:text-foreground text-base"
+                            className="text-muted-foreground hover:text-foreground text-base transition-colors"
                         >
                             Accueil
-                        </NavLink>
-                        <NavLink
-                            href="/garantie"
-                            className="text-muted-foreground hover:text-foreground text-base"
+                        </Link>
+
+                        <Link
+                            href="/test"
+                            className="text-muted-foreground hover:text-foreground text-base transition-colors"
                         >
-                            Garanties audioprothèses
-                        </NavLink>
-                        <NavLink
-                            href="/protection"
-                            className="text-muted-foreground hover:text-foreground text-base"
+                            Test
+                        </Link>
+
+                        <Link
+                            href="/contact"
+                            className="text-muted-foreground hover:text-foreground text-base transition-colors"
                         >
-                            Solutions audioprothésistes
-                        </NavLink>
-                        <NavLink
-                            href="/join"
-                            className="text-muted-foreground hover:text-foreground text-base"
-                        >
-                            Nous rejoindre
-                        </NavLink>
+                            Contact
+                        </Link>
                     </nav>
 
                     <div className="flex items-center gap-2">

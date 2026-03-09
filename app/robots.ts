@@ -1,5 +1,5 @@
-// app/robots.ts
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -25,6 +25,6 @@ export default function robots(): MetadataRoute.Robots {
                 allow: "/",
             },
         ],
-        sitemap: "https://protecaudio.fr/sitemap.xml",
+        sitemap: `${siteConfig.url}/sitemap.xml`,
     };
 }
