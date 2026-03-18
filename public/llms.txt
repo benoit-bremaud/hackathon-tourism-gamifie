@@ -1,52 +1,69 @@
-# ProtecAudio
+# [NOM_DU_SITE]
 
-> Solutions d'assurance et de protection pour audioprothésistes en France.
+> [PROMESSE_COURTE_DU_SITE]
 
-ProtecAudio accompagne depuis plus de 35 ans les professionnels du secteur de l'audioprothèse dans la protection et la sécurisation de leur activité. Nous développons des solutions d'assurance spécifiquement dédiées aux dispositifs auditifs et à l'activité des audioprothésistes.
+[NOM_DU_SITE] est [DESCRIPTION_COURTE_DE_L_ENTREPRISE_OU_DU_SERVICE].
+Nous accompagnons [CIBLE_PRINCIPALE] avec [OFFRE_PRINCIPALE].
+Le site a pour objectif de présenter [SERVICES_OU_POSITIONNEMENT], faciliter la prise de contact et orienter les visiteurs vers les pages utiles.
 
-## Chiffres clés
+## Points clés
 
-- Plus de 600 000 appareils auditifs assurés
-- Plus de 9 000 sinistres pris en charge par an
-- Plus de 3 000 centres auditifs partenaires
+- [CHIFFRE_OU_PREUVE_1]
+- [CHIFFRE_OU_PREUVE_2]
+- [CHIFFRE_OU_PREUVE_3]
 
-## Services
+## Services principaux
 
-### Garanties appareils auditifs
-Assurance des dispositifs auditifs pour les patients des audioprothésistes :
-- **Garantie Perte** : remplacement de l'appareil égaré
-- **Garantie Vol** : couverture contre la soustraction frauduleuse
-- **Garantie Casse** : réparation ou remplacement suite à un dommage matériel
+### [SERVICE_1]
+[DESCRIPTION_COURTE_SERVICE_1]
 
-Les audioprothèses Classe 1 ou 2 sont couvertes pendant 4 ans. Les accessoires (système FM, Cros, ancrage osseux) sont pris en charge pendant 2 ans.
+- [BENEFICE_OU_FONCTIONNALITE_1]
+- [BENEFICE_OU_FONCTIONNALITE_2]
+- [BENEFICE_OU_FONCTIONNALITE_3]
 
-### Protection d'activité professionnelle
-Solutions de protection globale pour l'activité d'audioprothésiste :
-- Responsabilité Civile Professionnelle
-- Multirisque professionnelle
-- Protection juridique
-- Perte d'exploitation
-- Protection des locaux et du matériel
+### [SERVICE_2]
+[DESCRIPTION_COURTE_SERVICE_2]
 
-## Cabinets partenaires distributeurs
+- [BENEFICE_OU_FONCTIONNALITE_1]
+- [BENEFICE_OU_FONCTIONNALITE_2]
+- [BENEFICE_OU_FONCTIONNALITE_3]
 
-- **Mark'assur** — markassur.com
-- **Eurossur Audio** — eurossur-audio.fr
-- **Rossard Courtage** — rossardcourtage.com
+### [SERVICE_3]
+[DESCRIPTION_COURTE_SERVICE_3]
 
-## Pages du site
+- [BENEFICE_OU_FONCTIONNALITE_1]
+- [BENEFICE_OU_FONCTIONNALITE_2]
+- [BENEFICE_OU_FONCTIONNALITE_3]
 
-- [Accueil](https://protecaudio.fr/): Présentation de ProtecAudio et de ses services
-- [Garanties](https://protecaudio.fr/garantie): Détail des garanties d'assurance pour appareils auditifs (Perte, Vol, Casse)
-- [Protection](https://protecaudio.fr/protection): Solutions de protection d'activité pour audioprothésistes
-- [Contact](https://protecaudio.fr/contact): Options de contact (téléphone, rappel, e-mail)
-- [Formulaire de contact](https://protecaudio.fr/contact/form): Formulaire pour demander un devis ou des informations
-- [Appeler une agence](https://protecaudio.fr/appeler-agence): Numéros de téléphone par profil (partenaire, futur partenaire, particulier)
-- [Nous rejoindre](https://protecaudio.fr/join): Candidature pour rejoindre l'équipe ProtecAudio
-- [Mentions légales](https://protecaudio.fr/mentions-legales): Informations légales et liens vers les cabinets partenaires
+## Pages principales
 
-## Contact
+- [Accueil]([URL_SITE]/) : [ROLE_DE_LA_PAGE_ACCUEIL]
+- [Page service 1]([URL_SITE]/[SLUG_1]) : [ROLE_DE_LA_PAGE]
+- [Page service 2]([URL_SITE]/[SLUG_2]) : [ROLE_DE_LA_PAGE]
+- [Contact]([URL_SITE]/contact) : [ROLE_DE_LA_PAGE_CONTACT]
+- [Formulaire de contact]([URL_SITE]/contact/form) : [ROLE_DU_FORMULAIRE]
 
-- **Téléphone** : 09 80 08 50 47
-- **Horaires** : Du lundi au vendredi, de 9h à 18h
-- **Site web** : https://protecaudio.fr
+## Informations de contact
+
+- Téléphone : [TELEPHONE_PRINCIPAL]
+- E-mail : [EMAIL_PRINCIPAL]
+- Adresse : [ADRESSE_POSTALE]
+- Horaires : [HORAIRES]
+- Site web : [URL_SITE]
+
+## Informations légales
+
+- Raison sociale : [RAISON_SOCIALE]
+- Forme juridique : [FORME_JURIDIQUE]
+- Capital : [CAPITAL]
+- RCS : [RCS]
+- ORIAS / agrément / immatriculation : [IDENTIFIANT_LEGAL]
+- Autorité de tutelle : [AUTORITE_DE_TUTELLE]
+
+## Optional
+
+- [Mentions légales]([URL_SITE]/mentions-legales) : [DESCRIPTION_COURTE]
+- [Politique de confidentialité]([URL_SITE]/politique-confidentialite) : [DESCRIPTION_COURTE]
+- [Politique cookies]([URL_SITE]/politique-cookies) : [DESCRIPTION_COURTE]
+- [Page secondaire 1]([URL_SITE]/[SLUG_SECONDAIRE]) : [DESCRIPTION_COURTE]
+- [Page secondaire 2]([URL_SITE]/[SLUG_SECONDAIRE]) : [DESCRIPTION_COURTE]
