@@ -39,17 +39,6 @@ export function MenuBurger() {
                 <SheetHeader className="space-y-1">
                     <SheetTitle className="flex items-center justify-between">
                         <span>Menu</span>
-                        {/* Si tu veux le bouton fermer :
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              onClick={() => setOpen(false)}
-              aria-label="Fermer le menu"
-            >
-              <LucideIcon icon={X} className="h-5 w-5" />
-            </Button>
-            */}
                     </SheetTitle>
                 </SheetHeader>
 

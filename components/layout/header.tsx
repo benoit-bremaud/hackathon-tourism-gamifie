@@ -17,14 +17,10 @@ export function Header() {
             <Container>
                 <div className="flex h-16 items-center justify-between">
                     <Link href="/" className="font-semibold tracking-tight">
-                        {/* <Image
-                            src="/logo-transparent.png"
-                            alt="Protec'audio Logo"
-                            width={120}
-                            height={20}
-                            className="h-auto w-auto max-w-[220px]"
-                            priority={false}
-                        /> */}
+
+                        <span className="text-xl font-bold uppercase tracking-tighter">
+                            Skeleton
+                        </span>
                     </Link>
 
                     <nav
@@ -38,36 +34,8 @@ export function Header() {
                             Accueil
                         </Link>
 
-                        <Link
-                            href="/test"
-                            className="text-muted-foreground hover:text-foreground text-base transition-colors"
-                        >
-                            Test
-                        </Link>
-
-                        <Link
-                            href="/contact"
-                            className="text-muted-foreground hover:text-foreground text-base transition-colors"
-                        >
-                            Contact
-                        </Link>
-                        <Link
-                            href="/example"
-                            className="text-muted-foreground hover:text-foreground text-base transition-colors"
-                        >
-                            Example
-                        </Link>
                     </nav>
 
-                    <div className="flex items-center gap-2">
-                        {/* Desktop CTA */}
-                        <Button asChild className="hidden rounded-full rounded-tr-md font-light uppercase tracking-wider md:inline-flex">
-                            <Link href="/contact">Contact&nbsp;&nbsp;→</Link>
-                        </Button>
-
-                        {/* Mobile burger */}
-                        <MenuBurger />
-                    </div>
                 </div>
             </Container>
         </header>

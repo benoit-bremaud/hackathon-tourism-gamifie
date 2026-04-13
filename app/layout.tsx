@@ -1,7 +1,5 @@
 import "./globals.css";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { ParallaxBackgroundClient } from "@/components/layout/parallaxBackgroundClient";
 import { Poppins, Quicksand } from "next/font/google";
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
@@ -78,12 +76,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
             </head>
             <body className="bg-background text-foreground flex min-h-dvh flex-col antialiased">
-                <ParallaxBackgroundClient />
+
                 <Header />
                 <main id="main" className="flex-1">
                     {children}
                 </main>
-                <Footer />
+
             </body>
         </html>
     );

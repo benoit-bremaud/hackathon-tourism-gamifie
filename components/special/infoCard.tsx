@@ -8,7 +8,7 @@ import LucideIcon from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
 type Props = {
-    logoSrc: string;
+    logoSrc?: string;
     logoAlt?: string;
     logoWidth?: number;
     logoHeight?: number;
@@ -59,19 +59,21 @@ export function InfoCard({
         <Card className={cn("rounded-2xl", className)}>
             <CardContent className="p-8">
                 {/* Logo */}
-                <div className="flex justify-center">
-                    <Image
-                        src={logoSrc}
-                        alt={logoAlt}
-                        width={logoWidth}
-                        height={logoHeight}
-                        className="h-auto w-auto max-w-[260px]"
-                        priority={false}
-                    />
-                </div>
-
-                {/* Trait */}
-                <div className="bg-border my-6 h-px w-full" />
+                {logoSrc ? (
+                    <>
+                        <div className="flex justify-center">
+                            <Image
+                                src={logoSrc}
+                                alt={logoAlt}
+                                width={logoWidth}
+                                height={logoHeight}
+                                className="h-auto w-auto max-w-[260px]"
+                                priority={false}
+                            />
+                        </div>
+                        <div className="bg-border my-6 h-px w-full" />
+                    </>
+                ) : null}
 
                 {/* Titre */}
                 <h2 className="text-primary text-2xl font-semibold tracking-tight">{title}</h2>

@@ -2,7 +2,7 @@ import type { EmailContent, BrandConfig } from "./shared";
 import { escapeHtml, kvTable, nl2brEscaped, renderEmailLayout } from "./shared";
 
 export type ContactEmailData = {
-  insuranceLabel: string;
+  requestLabel: string;
   userType: string;
   jobFunction: string;
   firstName: string;
@@ -17,12 +17,12 @@ export type ContactEmailData = {
 };
 
 export function buildContactEmail(data: ContactEmailData, brand?: BrandConfig): EmailContent {
-  const subject = `[Contact] ${escapeHtml(data.insuranceLabel)} — ${escapeHtml(data.lastName)} ${escapeHtml(data.firstName)}`;
+  const subject = `[Contact] ${escapeHtml(data.requestLabel)} — ${escapeHtml(data.lastName)} ${escapeHtml(data.firstName)}`;
 
   const text = [
     "Nouveau message via le formulaire",
     "",
-    `Type de demande : ${data.insuranceLabel}`,
+    `Type de demande : ${data.requestLabel}`,
     "",
     `Vous êtes : ${data.userType}`,
     `Fonction : ${data.jobFunction}`,
@@ -43,7 +43,7 @@ export function buildContactEmail(data: ContactEmailData, brand?: BrandConfig): 
   const sectionsHtml = `
     <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
       ${kvTable([
-    { label: "Type de demande", value: data.insuranceLabel },
+    { label: "Type de demande", value: data.requestLabel },
     { label: "Vous êtes", value: data.userType },
     { label: "Fonction", value: data.jobFunction },
   ])}
@@ -84,8 +84,8 @@ export function buildContactEmail(data: ContactEmailData, brand?: BrandConfig): 
 
   const html = renderEmailLayout({
     title: "Nouveau message via le formulaire",
-    subtitle: `Type de demande : ${data.insuranceLabel}`,
-    previewText: `Nouveau message — ${data.insuranceLabel} — ${data.lastName} ${data.firstName}`,
+    subtitle: `Type de demande : ${data.requestLabel}`,
+    previewText: `Nouveau message — ${data.requestLabel} — ${data.lastName} ${data.firstName}`,
     bodyHtml: sectionsHtml,
     brand,
   });
@@ -94,9 +94,5 @@ export function buildContactEmail(data: ContactEmailData, brand?: BrandConfig): 
 }
 
 /*
- Ancien usage :
- "insuranceLabel" correspondait à un type d’assurance métier.
- On conserve la même clé pour éviter de réécrire toute la chaîne
- de génération d’email, mais dans le skeleton elle représente
- simplement le type de demande sélectionné dans le formulaire.
+ "requestLabel" correspond au type de demande sélectionné dans le formulaire.
 */

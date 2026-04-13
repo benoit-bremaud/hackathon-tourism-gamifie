@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 
         const mail = buildContactEmail(
             {
-                insuranceLabel: requestLabel[values.requestType],
+                requestLabel: requestLabel[values.requestType],
                 userType: values.userType,
                 jobFunction: values.jobFunction,
                 firstName: values.firstName,
@@ -104,18 +104,5 @@ export async function POST(req: Request) {
 }
 
 /*
- Ancien usage métier conservé dans l’idée :
- le routage se faisait selon des types d’assurance très spécifiques
- vers plusieurs boîtes dédiées.
-
- Pour le skeleton, on garde exactement le même principe,
- mais avec des catégories plus génériques :
- - contact
- - devis
- - support
- - partenariat
- - autre
-
- Si un futur projet nécessite un routage plus spécifique,
- il suffira d’adapter REQUEST_EMAIL et les options du schéma.
+ Le routage se fait selon les types de demande vers différentes boîtes configurées.
 */

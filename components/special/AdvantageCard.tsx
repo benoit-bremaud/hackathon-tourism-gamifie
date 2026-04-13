@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LucideIcon from "@/components/ui/icon";
 import type { LucideIcon as LucideIconType } from "lucide-react";
 
-type GarantieCardProps = {
+type AdvantageCardProps = {
     title: string;
     body?: string;
     icon?: LucideIconType;
@@ -12,18 +12,18 @@ type GarantieCardProps = {
     variant?: "default" | "compact";
 };
 
-export function GarantieCard({
+export function AdvantageCard({
     title,
     body,
     icon,
     iconSrc,
     headerClassName,
     variant = "default",
-}: GarantieCardProps) {
+}: AdvantageCardProps) {
     const isCompact = variant === "compact" || !body;
 
     return (
-        <Card className="overflow-hidden rounded-2xl p-0 shadow-sm">
+        <Card className="overflow-hidden rounded-2xl p-0 shadow-sm border-border bg-card">
             <CardHeader className="p-0">
                 <div className={`bg-primary relative pb-3 ${headerClassName ?? ""}`}>
                     <div className="flex items-center justify-center py-6">
