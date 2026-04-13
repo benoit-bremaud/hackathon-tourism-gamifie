@@ -3,19 +3,18 @@
 import * as React from "react";
 import { Menu } from "lucide-react";
 import { NavLink } from "./navLink";
-
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import LucideIcon from "@/components/ui/icon";
 
 type NavItem = { href: string; label: string };
 
 const NAV_ITEMS: NavItem[] = [
     { href: "/", label: "Accueil" },
-    { href: "/garantie", label: "Garanties audioprothèses" },
-    { href: "/protection", label: "Protection de votre activité" },
-    { href: "/contact", label: "Contact" },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/trips", label: "Voyages" },
+    { href: "/login", label: "Connexion" },
 ];
 
 export function MenuBurger() {
@@ -59,7 +58,7 @@ export function MenuBurger() {
 
                     <Separator />
 
-                    <p className="text-muted-foreground text-xs">Réponse sous 48h ouvrées.</p>
+                    <p className="text-muted-foreground text-xs">Prototype visuel de démonstration.</p>
                 </div>
             </SheetContent>
         </Sheet>
