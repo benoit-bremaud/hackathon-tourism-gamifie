@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbaee223-1694-4642-82f2-2cf0c9a8df7f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/Assiette vibrante de street food asiatique.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/Coucher de soleil sur la mer turquoise.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/Pont ancien au matin brumeux.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/Porte ancienne et détails en fer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/Rires devant l'art de rue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/picrush_logo_v4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(pages)/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/sitemap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/sitemap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/menuBurger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/menuBurger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/site.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/site.ts" afterDir="false" />
-    </list>
+    <list default="true" id="bbaee223-1694-4642-82f2-2cf0c9a8df7f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776074158530</updated>
-      <workItem from="1776074160296" duration="7543000" />
+      <workItem from="1776074160296" duration="7853000" />
     </task>
     <servers />
   </component>
