@@ -1,22 +1,26 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
+import { trips, getTripPhotos } from "@/lib/mock-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const lastModified = new Date();
-    const staticPages = [
-        "",
-        "/login",
-        "/dashboard",
-        "/trips",
-        "/trips/lisbon-sunbook",
-        "/trips/lisbon-sunbook/sessions",
-        "/trips/lisbon-sunbook/photos",
-        "/trips/lisbon-sunbook/photos/p1",
-        "/trips/lisbon-sunbook/members",
-        "/trips/lisbon-sunbook/album",
-    ];
+    const staticPages = ["", "/login", "/dashboard", "/trips"];
+    const tripPages = trips.flatMap((trip) => {
+        const base = `/trips/${trip.id}`;
+        const photoPages = getTripPhotos(trip.id).map((photo) => `${base}/photos/${photo.id}`);
 
-    return staticPages.map((route) => ({
+        return [
+            base,
+            `${base}/sessions`,
+            `${base}/photos`,
+            `${base}/members`,
+            `${base}/album`,
+            ...photoPages,
+        ];
+    });
+    const routes = [...staticPages, ...tripPages];
+
+    return routes.map((route) => ({
         url: `${siteConfig.url}${route}`,
         lastModified,
         changeFrequency: "monthly",

@@ -9,7 +9,7 @@ import { GradientPhoto } from "@/components/placeholders/gradient-photo";
 import { SessionCard } from "@/components/sessions/session-card";
 import { TripCard } from "@/components/trips/trip-card";
 import { Button } from "@/components/ui/button";
-import { currentUser, getTripSessions, trips } from "@/lib/mock-data";
+import { currentUser, getTripSessions, imageAssets, trips } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
     title: "Dashboard",
@@ -48,6 +48,8 @@ export default function DashboardPage() {
                         <div className="rounded-[34px] border border-white/60 bg-card/90 p-4 shadow-sm">
                             <GradientPhoto
                                 tone={featuredTrip.tone}
+                                imageSrc={featuredTrip.coverImage}
+                                imageAlt={featuredTrip.name}
                                 ratio="hero"
                                 subtitle="Voyage à suivre"
                                 title={featuredTrip.name}
@@ -118,6 +120,13 @@ export default function DashboardPage() {
                                     Le dashboard relie proprement les voyages, les sessions, la
                                     galerie et l&rsquo;album, sans backend ni logique métier réelle.
                                 </p>
+                                <GradientPhoto
+                                    tone="city"
+                                    imageSrc={imageAssets.voteBoard}
+                                    imageAlt="Vote photos"
+                                    ratio="landscape"
+                                    className="mt-6 rounded-[26px]"
+                                />
                             </div>
                         </div>
                     </div>

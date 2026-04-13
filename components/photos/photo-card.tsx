@@ -10,6 +10,8 @@ export function PhotoCard({ trip, photo }: { trip: Trip; photo: Photo }) {
             <div className="space-y-3">
                 <GradientPhoto
                     tone={photo.tone}
+                    imageSrc={photo.imageSrc}
+                    imageAlt={photo.title}
                     ratio={photo.ratio}
                     title={photo.title}
                     subtitle={photo.tag}

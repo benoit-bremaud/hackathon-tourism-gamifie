@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { CoverTone } from "@/lib/mock-data";
 
@@ -5,6 +6,8 @@ type GradientPhotoProps = {
     title?: string;
     subtitle?: string;
     tone: CoverTone;
+    imageSrc?: string;
+    imageAlt?: string;
     ratio?: "portrait" | "square" | "landscape" | "hero";
     className?: string;
     overlay?: React.ReactNode;
@@ -31,6 +34,8 @@ export function GradientPhoto({
     title,
     subtitle,
     tone,
+    imageSrc,
+    imageAlt,
     ratio = "landscape",
     className,
     overlay,
@@ -46,7 +51,21 @@ export function GradientPhoto({
                 className,
             )}
         >
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),transparent_35%,rgba(255,255,255,0.08)_100%)]" />
+            {imageSrc ? (
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt ?? title ?? subtitle ?? "TravelFlow visual"}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 50vw"
+                    className="object-cover"
+                />
+            ) : null}
+            <div
+                className={cn(
+                    "absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),transparent_35%,rgba(255,255,255,0.08)_100%)]",
+                    imageSrc && "bg-[linear-gradient(180deg,rgba(7,14,10,0.04),rgba(7,14,10,0.26))]",
+                )}
+            />
             {overlay ? <div className="absolute inset-0">{overlay}</div> : null}
             {(title || subtitle) && (
                 <div className="absolute inset-x-0 bottom-0 z-10 p-5 text-white">

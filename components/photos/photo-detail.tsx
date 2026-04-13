@@ -15,7 +15,14 @@ export function PhotoDetail({
 }) {
     return (
         <div className="space-y-5">
-            <GradientPhoto tone={photo.tone} ratio="hero" title={photo.title} subtitle={photo.tag} />
+            <GradientPhoto
+                tone={photo.tone}
+                imageSrc={photo.imageSrc}
+                imageAlt={photo.title}
+                ratio="hero"
+                title={photo.title}
+                subtitle={photo.tag}
+            />
 
             <div className="space-y-4 rounded-[30px] border border-white/50 bg-card/90 p-5 shadow-sm">
                 <div className="flex flex-wrap items-center gap-2">

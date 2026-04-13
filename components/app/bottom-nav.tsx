@@ -4,17 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BookOpenText, Home, Images, LayoutGrid, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const items = [
-    { href: "/dashboard", label: "Accueil", icon: Home },
-    { href: "/trips", label: "Voyages", icon: LayoutGrid },
-    { href: "/trips/lisbon-sunbook/photos", label: "Photos", icon: Images },
-    { href: "/trips/lisbon-sunbook/members", label: "Membres", icon: Users },
-    { href: "/trips/lisbon-sunbook/album", label: "Album", icon: BookOpenText },
-];
+import { trips } from "@/lib/mock-data";
 
 export function BottomNav() {
     const pathname = usePathname();
+    const activeTripId =
+        pathname.match(/^\/trips\/([^/]+)/)?.[1] ?? trips[0]?.id ?? "lisbon-sunbook";
+
+    const items = [
+        { href: "/dashboard", label: "Accueil", icon: Home },
+        { href: "/trips", label: "Voyages", icon: LayoutGrid },
+        { href: `/trips/${activeTripId}/photos`, label: "Photos", icon: Images },
+        { href: `/trips/${activeTripId}/members`, label: "Membres", icon: Users },
+        { href: `/trips/${activeTripId}/album`, label: "Album", icon: BookOpenText },
+    ];
 
     return (
         <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">

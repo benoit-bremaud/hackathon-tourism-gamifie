@@ -12,6 +12,8 @@ export function TripCard({ trip }: { trip: Trip }) {
             <div className="p-3">
                 <GradientPhoto
                     tone={trip.tone}
+                    imageSrc={trip.coverImage}
+                    imageAlt={trip.name}
                     ratio="landscape"
                     title={trip.destination}
                     subtitle={trip.coverKicker}

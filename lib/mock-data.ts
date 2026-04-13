@@ -33,6 +33,7 @@ export type Photo = {
     authorId: string;
     sessionId: string;
     tone: CoverTone;
+    imageSrc: string;
     likes: number;
     comments: number;
     ratio: "portrait" | "square" | "landscape";
@@ -54,6 +55,9 @@ export type Trip = {
     period: string;
     datesLabel: string;
     tone: CoverTone;
+    coverImage: string;
+    albumCoverImage: string;
+    galleryPreview: string[];
     status: "Planning" | "Collecte" | "Album";
     membersCount: number;
     coverKicker: string;
@@ -78,6 +82,18 @@ export const currentUser: User = {
     location: "Paris",
 };
 
+export const imageAssets = {
+    mobileJourney: "/images/user_mobile.png",
+    albumBoard: "/images/album_photos.png",
+    groupRooftop: "/images/friends.png",
+    voteBoard: "/images/vote_photos.png",
+    seaSunset: "/images/Coucher de soleil sur la mer turquoise.png",
+    streetGroup: "/images/Rires devant l'art de rue.png",
+    mistyBridge: "/images/Pont ancien au matin brumeux.png",
+    streetFood: "/images/Assiette vibrante de street food asiatique.png",
+    heritageDoor: "/images/Porte ancienne et détails en fer.png",
+} as const;
+
 export const trips: Trip[] = [
     {
         id: "lisbon-sunbook",
@@ -86,6 +102,9 @@ export const trips: Trip[] = [
         period: "12-16 mai",
         datesLabel: "12 mai au 16 mai 2026",
         tone: "city",
+        coverImage: imageAssets.streetGroup,
+        albumCoverImage: imageAssets.groupRooftop,
+        galleryPreview: [imageAssets.streetGroup, imageAssets.streetFood, imageAssets.seaSunset],
         status: "Collecte",
         membersCount: 4,
         coverKicker: "City trip collaboratif",
@@ -105,6 +124,9 @@ export const trips: Trip[] = [
         period: "2-5 juin",
         datesLabel: "2 juin au 5 juin 2026",
         tone: "mountain",
+        coverImage: imageAssets.mistyBridge,
+        albumCoverImage: imageAssets.seaSunset,
+        galleryPreview: [imageAssets.mistyBridge, imageAssets.seaSunset, imageAssets.heritageDoor],
         status: "Planning",
         membersCount: 2,
         coverKicker: "Escapade montagne",
@@ -124,6 +146,9 @@ export const trips: Trip[] = [
         period: "22-28 septembre",
         datesLabel: "22 septembre au 28 septembre 2026",
         tone: "desert",
+        coverImage: imageAssets.seaSunset,
+        albumCoverImage: imageAssets.albumBoard,
+        galleryPreview: [imageAssets.seaSunset, imageAssets.heritageDoor, imageAssets.groupRooftop],
         status: "Album",
         membersCount: 2,
         coverKicker: "Road trip souvenirs",
@@ -293,6 +318,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-noah",
             sessionId: "s2",
             tone: "city",
+            imageSrc: imageAssets.streetGroup,
             likes: 48,
             comments: 7,
             ratio: "portrait",
@@ -305,6 +331,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-clara",
             sessionId: "s3",
             tone: "coast",
+            imageSrc: imageAssets.streetFood,
             likes: 32,
             comments: 5,
             ratio: "square",
@@ -317,6 +344,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-lea",
             sessionId: "s3",
             tone: "city",
+            imageSrc: imageAssets.groupRooftop,
             likes: 63,
             comments: 11,
             ratio: "landscape",
@@ -329,6 +357,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-clara",
             sessionId: "s1",
             tone: "coast",
+            imageSrc: imageAssets.heritageDoor,
             likes: 26,
             comments: 4,
             ratio: "portrait",
@@ -341,6 +370,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-noah",
             sessionId: "s4",
             tone: "desert",
+            imageSrc: imageAssets.seaSunset,
             likes: 71,
             comments: 13,
             ratio: "landscape",
@@ -353,6 +383,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-lea",
             sessionId: "s3",
             tone: "city",
+            imageSrc: imageAssets.mobileJourney,
             likes: 54,
             comments: 6,
             ratio: "square",
@@ -367,6 +398,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-anais",
             sessionId: "s5",
             tone: "mountain",
+            imageSrc: imageAssets.mistyBridge,
             likes: 22,
             comments: 2,
             ratio: "landscape",
@@ -381,6 +413,7 @@ export const photosByTrip: Record<string, Photo[]> = {
             authorId: "m-mila",
             sessionId: "s8",
             tone: "desert",
+            imageSrc: imageAssets.albumBoard,
             likes: 57,
             comments: 9,
             ratio: "portrait",
