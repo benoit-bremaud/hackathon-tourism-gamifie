@@ -1,11 +1,11 @@
-export const siteName = "Site Skeleton";
-export const domain = "site-skeleton.com";
-export const url = `https://${domain}`;
+export const siteName = "Agence Digitale";
+export const domain = "agence-digitale.fr";
+export const url = process.env.NEXT_PUBLIC_SITE_URL || `https://${domain}`;
 export const description =
-    "Starter Next.js réutilisable pour créer rapidement des sites vitrines modernes avec Tailwind CSS, TypeScript et une architecture propre.";
+    "Expertise en développement web, design moderne et stratégie digitale. Nous créons des solutions performantes et sur-mesure pour booster votre présence en ligne.";
 export const locale = "fr_FR";
-export const logo = `${url}/logo-placeholder.svg`;
-export const ogImage = `${url}/og-image-placeholder.png`;
+export const logo = `${url}/logo.png`;
+export const ogImage = `${url}/images/og-main.png`;
 
 export const siteConfig = {
     name: siteName,
@@ -15,6 +15,10 @@ export const siteConfig = {
     locale,
     logo,
     ogImage,
-    contactEmail: "contact@example.com",
-    contactPhone: "01 23 45 67 89",
+    contactEmail: "hello@agence-digitale.fr",
+    contactPhone: "01 02 03 04 05",
+    social: {
+        twitter: "@agence_digitale",
+        linkedin: "https://linkedin.com/company/agence-digitale",
+    },
 };

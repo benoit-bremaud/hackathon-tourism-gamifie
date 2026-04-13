@@ -1,7 +1,9 @@
 import "./globals.css";
 import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { ParallaxBackgroundClient } from "@/components/layout/parallaxBackgroundClient";
 import { Poppins, Quicksand } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/config/site";
 
 const poppins = Poppins({
@@ -17,6 +19,12 @@ const quicksand = Quicksand({
     variable: "--font-quicksand",
 });
 
+export const viewport: Viewport = {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+};
+
 export const metadata: Metadata = {
     title: {
         default: siteConfig.name,
@@ -24,6 +32,9 @@ export const metadata: Metadata = {
     },
     description: siteConfig.description,
     metadataBase: new URL(siteConfig.url),
+    alternates: {
+        canonical: "/",
+    },
     openGraph: {
         type: "website",
         locale: siteConfig.locale,
@@ -35,6 +46,7 @@ export const metadata: Metadata = {
                 url: siteConfig.ogImage,
                 width: 1200,
                 height: 630,
+                alt: siteConfig.name,
             },
         ],
     },
@@ -43,6 +55,11 @@ export const metadata: Metadata = {
         title: siteConfig.name,
         description: siteConfig.description,
         images: [siteConfig.ogImage],
+        creator: siteConfig.social.twitter,
+    },
+    robots: {
+        index: true,
+        follow: true,
     },
 };
 
@@ -52,14 +69,16 @@ const jsonLd = {
     name: siteConfig.name,
     url: siteConfig.url,
     logo: siteConfig.logo,
+    image: siteConfig.ogImage,
     description: siteConfig.description,
     contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+33123456789",
+        telephone: siteConfig.contactPhone,
         contactType: "customer service",
         availableLanguage: "French",
         email: siteConfig.contactEmail,
     },
+    sameAs: [siteConfig.social.linkedin],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -76,12 +95,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
             </head>
             <body className="bg-background text-foreground flex min-h-dvh flex-col antialiased">
-
+                <ParallaxBackgroundClient />
                 <Header />
-                <main id="main" className="flex-1">
+                <main id="main" className="flex-1 focus:outline-none" tabIndex={-1}>
                     {children}
                 </main>
-
+                <Footer />
             </body>
         </html>
     );

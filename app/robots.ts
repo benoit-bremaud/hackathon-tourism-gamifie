@@ -1,30 +1,13 @@
-import type { MetadataRoute } from "next";
+import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
-export default function robots(): MetadataRoute.Robots {
+export default function robots(): Metadata {
     return {
-        rules: [
-            {
-                userAgent: "*",
-                allow: "/",
-            },
-            {
-                userAgent: "GPTBot",
-                allow: "/",
-            },
-            {
-                userAgent: "Claude-Web",
-                allow: "/",
-            },
-            {
-                userAgent: "PerplexityBot",
-                allow: "/",
-            },
-            {
-                userAgent: "Google-Extended",
-                allow: "/",
-            },
-        ],
+        rules: {
+            userAgent: "*",
+            allow: "/",
+            disallow: ["/api/", "/_next/", "/static/"],
+        },
         sitemap: `${siteConfig.url}/sitemap.xml`,
     };
 }

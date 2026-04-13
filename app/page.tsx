@@ -1,51 +1,22 @@
 import Link from "next/link";
-import Image from "next/image";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/config/site";
+import { AnimatedCounter } from "@/components/special/AnimatedCounter";
+import { FeatureGrid } from "@/components/special/FeatureGrid";
+import { AdvantageCard } from "@/components/special/AdvantageCard";
+import { Sparkles, Zap, ShieldCheck, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Accueil",
-    description:
-        "Starter Next.js réutilisable pour créer rapidement un site vitrine avec une architecture propre et des composants réutilisables.",
+    title: `${siteConfig.name} | Agence Digitale Performance & Design`,
+    description: siteConfig.description,
     openGraph: {
-        title: `${siteConfig.name} — Starter Next.js réutilisable`,
-        description:
-            "Base propre pour lancer rapidement un site vitrine avec Next.js, Tailwind CSS, TypeScript et des composants réutilisables.",
+        title: `${siteConfig.name} | Solutions Digitales sur-mesure`,
+        description: siteConfig.description,
     },
 };
-
-const features = [
-    {
-        title: "Base propre",
-        text: "Une architecture simple et maintenable pour démarrer rapidement de nouveaux projets.",
-    },
-    {
-        title: "Composants réutilisables",
-        text: "Des blocs réutilisables pour construire des pages vitrines rapidement et proprement.",
-    },
-    {
-        title: "Configuration centralisée",
-        text: "Les informations globales du site peuvent être regroupées dans une configuration unique.",
-    },
-] as const;
-
-const steps = [
-    {
-        title: "Configurer le site",
-        text: "Nom du site, domaine, SEO de base, navigation, contacts et branding global.",
-    },
-    {
-        title: "Adapter les pages",
-        text: "Créer ou modifier les sections utiles selon le site à reproduire.",
-    },
-    {
-        title: "Remplacer les contenus",
-        text: "Changer les textes, images, CTA et formulaires selon les besoins du projet.",
-    },
-] as const;
 
 export default function HomePage() {
     return (
@@ -60,146 +31,119 @@ export default function HomePage() {
                 }}
             />
 
-            <JsonLd
-                data={{
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    itemListElement: [
-                        {
-                            "@type": "ListItem",
-                            position: 1,
-                            name: "Accueil",
-                            item: siteConfig.url,
-                        },
-                    ],
-                }}
-            />
-
-            <section aria-label="Introduction" className="py-16 md:py-24">
+            {/* Hero Section */}
+            <section
+                aria-label="Introduction"
+                className="relative flex min-h-[80vh] items-center overflow-hidden py-20"
+            >
                 <Container>
-                    <div className="mx-auto max-w-4xl text-center">
-                        <Image
-                            src="/logo-transparent.png"
-                            alt="Logo du site"
-                            width={420}
-                            height={160}
-                            className="mx-auto h-auto w-[220px] md:w-[320px]"
-                            priority
-                        />
+                    <div className="relative z-10 mx-auto max-w-4xl text-center">
+                        <div className="bg-primary/10 text-primary mx-auto mb-8 w-fit rounded-full px-4 py-1.5 text-sm font-semibold tracking-wide uppercase">
+                            Expertise & Performance
+                        </div>
 
-                        <h1 className="mt-8 text-4xl font-semibold tracking-tight md:text-6xl">
-                            {siteConfig.name}
+                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+                            Propulsez votre <br />
+                            <span className="text-primary">Présence Digitale</span>
                         </h1>
 
-                        <p className="text-muted-foreground mt-6 text-base leading-relaxed md:text-lg">
+                        <p className="text-muted-foreground mx-auto mt-8 max-w-2xl text-lg leading-relaxed md:text-xl">
                             {siteConfig.description}
                         </p>
 
-                        <p className="text-muted-foreground mt-4 text-base leading-relaxed md:text-lg">
-                            Utilise cette page comme base de départ pour construire rapidement un
-                            nouveau site vitrine à partir d’un squelette propre et réutilisable.
-                        </p>
-
-                        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
                             <Button
                                 asChild
                                 size="lg"
-                                className="rounded-full rounded-tr-md font-light tracking-wider uppercase"
+                                className="h-14 rounded-full px-8 text-base font-semibold uppercase tracking-wider"
                             >
-                                <Link href="/contact">Nous contacter</Link>
+                                <Link href="/contact" className="flex items-center gap-2">
+                                    Démarrer un projet <ArrowRight className="h-4 w-4" />
+                                </Link>
                             </Button>
 
                             <Button
                                 asChild
                                 variant="outline"
                                 size="lg"
-                                className="rounded-full rounded-tr-md font-light tracking-wider uppercase"
+                                className="h-14 rounded-full px-8 text-base font-semibold uppercase tracking-wider"
                             >
-                                <Link href="/contact/form">Voir le formulaire</Link>
+                                <Link href="/contact/form">Nos solutions</Link>
                             </Button>
                         </div>
                     </div>
                 </Container>
             </section>
 
-            <section aria-label="Fonctionnalités" className="py-16 md:py-24">
+            {/* Stats Section */}
+            <section className="bg-primary/5 py-16">
                 <Container>
-                    <div className="grid gap-6 md:grid-cols-3">
-                        {features.map((feature) => (
-                            <div
-                                key={feature.title}
-                                className="bg-card border-border rounded-2xl border p-6 shadow-sm"
-                            >
-                                <h2 className="text-xl font-semibold">{feature.title}</h2>
-                                <p className="text-muted-foreground mt-3 leading-relaxed">
-                                    {feature.text}
-                                </p>
-                            </div>
-                        ))}
+                    <div className="grid gap-10 text-center md:grid-cols-3">
+                        <AnimatedCounter value={150} suffix="+" label="Projets livrés" />
+                        <AnimatedCounter value={98} suffix="%" label="Satisfaction client" />
+                        <AnimatedCounter value={10} label="Ans d'expertise" />
                     </div>
                 </Container>
             </section>
 
-            <section aria-label="Exemple de section visuelle" className="py-16 md:py-24">
+            {/* Features Section */}
+            <section className="py-20 md:py-32">
                 <Container>
-                    <div className="grid items-center gap-10 md:grid-cols-2">
-                        <div className="space-y-6">
-                            <h2 className="text-primary text-2xl font-bold tracking-tight md:text-3xl">
-                                Une base prête à être adaptée
-                            </h2>
+                    <div className="mb-16 text-center">
+                        <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+                            Nos Piliers de réussite
+                        </h2>
+                        <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
+                            Nous combinons design, technologie et stratégie pour créer des
+                            expériences mémorables.
+                        </p>
+                    </div>
 
-                            <p className="text-muted-foreground leading-relaxed">
-                                Ce squelette a pour but de fournir une fondation stable pour créer
-                                rapidement plusieurs sites vitrines en conservant une structure
-                                claire, une stack cohérente et des composants faciles à réutiliser.
-                            </p>
-
-                            <p className="text-muted-foreground leading-relaxed">
-                                Tu peux remplacer cette section par un hero, une section services,
-                                une grille de cartes, des témoignages, une FAQ ou tout autre bloc
-                                nécessaire selon le site cible.
-                            </p>
-
-                            <div className="pt-2">
-                                <Button
-                                    asChild
-                                    className="rounded-full rounded-tr-md font-light tracking-wider uppercase"
-                                >
-                                    <Link href="/contact">Démarrer un projet</Link>
-                                </Button>
-                            </div>
-                        </div>
-
-                        <div className="bg-muted border-border flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-2xl border">
-                            <span className="text-muted-foreground text-sm uppercase tracking-[0.2em]">
-                                Placeholder image
-                            </span>
-                        </div>
+                    <div className="grid gap-8 md:grid-cols-3">
+                        <AdvantageCard
+                            title="Performance"
+                            body="Des architectures web ultra-rapides et optimisées pour un taux de conversion maximal."
+                            icon={Zap}
+                            headerClassName="bg-sky-600"
+                        />
+                        <AdvantageCard
+                            title="Design"
+                            body="Une approche centrée sur l'utilisateur pour une interface intuitive et esthétique."
+                            icon={Sparkles}
+                            headerClassName="bg-indigo-600"
+                        />
+                        <AdvantageCard
+                            title="Sécurité"
+                            body="Protection intégrale de vos données et conformité aux standards de sécurité actuels."
+                            icon={ShieldCheck}
+                            headerClassName="bg-emerald-600"
+                        />
                     </div>
                 </Container>
             </section>
 
-            <section aria-label="Étapes" className="py-16 md:py-24">
-                <Container>
-                    <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
-                        Workflow conseillé
-                    </h2>
+            {/* Details Section */}
+            <FeatureGrid />
 
-                    <div className="mt-10 grid gap-6 md:grid-cols-3">
-                        {steps.map((step, index) => (
-                            <div
-                                key={step.title}
-                                className="bg-card border-border rounded-2xl border p-6 shadow-sm"
-                            >
-                                <div className="text-primary text-sm font-semibold tracking-[0.2em] uppercase">
-                                    Étape {index + 1}
-                                </div>
-                                <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
-                                <p className="text-muted-foreground mt-3 leading-relaxed">
-                                    {step.text}
-                                </p>
-                            </div>
-                        ))}
+            {/* CTA Section */}
+            <section className="py-20">
+                <Container>
+                    <div className="bg-primary rounded-3xl p-8 text-center text-white md:p-16">
+                        <h2 className="text-3xl font-bold md:text-5xl">
+                            Prêt à transformer votre vision ?
+                        </h2>
+                        <p className="mx-auto mt-6 max-w-2xl text-lg opacity-90">
+                            Rejoignez les entreprises qui nous font confiance pour leur
+                            développement stratégique.
+                        </p>
+                        <Button
+                            asChild
+                            size="lg"
+                            variant="secondary"
+                            className="mt-10 h-14 rounded-full px-10 text-base font-bold uppercase tracking-wider"
+                        >
+                            <Link href="/contact">Parlons de votre projet</Link>
+                        </Button>
                     </div>
                 </Container>
             </section>
