@@ -8,7 +8,7 @@ import type { Trip } from "@/lib/mock-data";
 
 export function TripCard({ trip }: { trip: Trip }) {
     return (
-        <Card className="overflow-hidden rounded-[30px] border-white/50 bg-white/80 p-0 shadow-[0_22px_60px_rgba(15,31,22,0.08)] backdrop-blur">
+        <Card className="flex h-full flex-col overflow-hidden rounded-[30px] border-white/50 bg-white/80 p-0 shadow-[0_22px_60px_rgba(15,31,22,0.08)] backdrop-blur">
             <div className="p-3">
                 <GradientPhoto
                     tone={trip.tone}
@@ -19,35 +19,37 @@ export function TripCard({ trip }: { trip: Trip }) {
                     subtitle={trip.coverKicker}
                 />
             </div>
-            <CardContent className="space-y-5 px-5 pb-5">
-                <div className="flex items-start justify-between gap-3">
-                    <div>
-                        <h3 className="text-xl font-semibold tracking-tight">{trip.name}</h3>
-                        <p className="text-muted-foreground mt-1 text-sm">{trip.datesLabel}</p>
+            <CardContent className="flex flex-1 flex-col px-5 pb-5">
+                <div className="space-y-5">
+                    <div className="flex items-start justify-between gap-3">
+                        <div>
+                            <h3 className="text-xl font-semibold tracking-tight">{trip.name}</h3>
+                            <p className="text-muted-foreground mt-1 text-sm">{trip.datesLabel}</p>
+                        </div>
+                        <PlaceholderBadge variant="muted">{trip.status}</PlaceholderBadge>
                     </div>
-                    <PlaceholderBadge variant="muted">{trip.status}</PlaceholderBadge>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed">{trip.description}</p>
+
+                    <div className="flex flex-wrap gap-2">
+                        {trip.highlights.map((item) => (
+                            <PlaceholderBadge key={item}>{item}</PlaceholderBadge>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center justify-between text-sm">
+                        <div className="text-muted-foreground flex items-center gap-2">
+                            <Users className="h-4 w-4" />
+                            {trip.membersCount} membres
+                        </div>
+                        <div className="text-muted-foreground flex items-center gap-2">
+                            <Camera className="h-4 w-4" />
+                            {trip.stats.photos} photos
+                        </div>
+                    </div>
                 </div>
 
-                <p className="text-muted-foreground text-sm leading-relaxed">{trip.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                    {trip.highlights.map((item) => (
-                        <PlaceholderBadge key={item}>{item}</PlaceholderBadge>
-                    ))}
-                </div>
-
-                <div className="flex items-center justify-between text-sm">
-                    <div className="text-muted-foreground flex items-center gap-2">
-                        <Users className="h-4 w-4" />
-                        {trip.membersCount} membres
-                    </div>
-                    <div className="text-muted-foreground flex items-center gap-2">
-                        <Camera className="h-4 w-4" />
-                        {trip.stats.photos} photos
-                    </div>
-                </div>
-
-                <Button asChild className="h-11 w-full rounded-full">
+                <Button asChild className="mt-auto h-11 w-full rounded-full">
                     <Link href={`/trips/${trip.id}`}>
                         Ouvrir
                         <ArrowRight className="h-4 w-4" />
