@@ -1,4 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { ImageOff } from "lucide-react";
+import { useState } from "react";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import type { CoverTone } from "@/lib/mock-data";
 
@@ -30,6 +35,13 @@ const ratioClasses = {
     hero: "aspect-[4/5] sm:aspect-[16/10]",
 };
 
+const imageSizes = {
+    portrait: "(max-width: 640px) 88vw, (max-width: 1024px) 42vw, 28vw",
+    square: "(max-width: 640px) 88vw, (max-width: 1024px) 42vw, 24vw",
+    landscape: "(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 40vw",
+    hero: "(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 52vw",
+};
+
 export function GradientPhoto({
     title,
     subtitle,
@@ -40,6 +52,12 @@ export function GradientPhoto({
     className,
     overlay,
 }: GradientPhotoProps) {
+    const normalizedImageSrc = imageSrc?.trim();
+    const [failedImageSrc, setFailedImageSrc] = useState<string | null>(null);
+
+    const fallbackLabel = imageAlt ?? title ?? subtitle ?? `${siteConfig.name} visual`;
+    const shouldRenderImage = Boolean(normalizedImageSrc) && failedImageSrc !== normalizedImageSrc;
+
     return (
         <div
             className={cn(
@@ -51,21 +69,32 @@ export function GradientPhoto({
                 className,
             )}
         >
-            {imageSrc ? (
+            {shouldRenderImage ? (
                 <Image
-                    src={imageSrc}
-                    alt={imageAlt ?? title ?? subtitle ?? "TravelFlow visual"}
+                    src={normalizedImageSrc!}
+                    alt={fallbackLabel}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 50vw"
+                    sizes={imageSizes[ratio]}
                     className="object-cover"
+                    onError={() => setFailedImageSrc(normalizedImageSrc ?? null)}
                 />
             ) : null}
             <div
                 className={cn(
                     "absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),transparent_35%,rgba(255,255,255,0.08)_100%)]",
-                    imageSrc && "bg-[linear-gradient(180deg,rgba(7,14,10,0.04),rgba(7,14,10,0.26))]",
+                    shouldRenderImage && "bg-[linear-gradient(180deg,rgba(7,14,10,0.04),rgba(7,14,10,0.26))]",
                 )}
             />
+            {!shouldRenderImage ? (
+                <div className="absolute inset-0 z-[1] flex items-center justify-center p-6">
+                    <div className="rounded-full border border-white/40 bg-black/15 px-4 py-2 text-center text-sm font-medium text-white backdrop-blur-sm">
+                        <span className="inline-flex items-center gap-2">
+                            <ImageOff className="h-4 w-4" aria-hidden="true" />
+                            {fallbackLabel}
+                        </span>
+                    </div>
+                </div>
+            ) : null}
             {overlay ? <div className="absolute inset-0">{overlay}</div> : null}
             {(title || subtitle) && (
                 <div className="absolute inset-x-0 bottom-0 z-10 p-5 text-white">

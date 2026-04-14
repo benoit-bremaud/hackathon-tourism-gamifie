@@ -11,7 +11,7 @@ import { siteConfig } from "@/config/site";
 import { imageAssets, productHighlights, trips } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
-    title: "TravelFlow",
+    title: siteConfig.name,
     description: siteConfig.description,
 };
 
@@ -76,7 +76,7 @@ export default function HomePage() {
                                 <GradientPhoto
                                     tone={featuredTrip.tone}
                                     imageSrc={imageAssets.mobileJourney}
-                                    imageAlt="Aperçu mobile TravelFlow"
+                                    imageAlt="Aperçu mobile PicRush"
                                     ratio="hero"
                                     subtitle="Trip teaser"
                                     title={featuredTrip.name}

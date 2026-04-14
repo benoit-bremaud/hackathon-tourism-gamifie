@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { Bell, Compass, Plus } from "lucide-react";
+import Image from "next/image";
+import { Bell, Plus } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import { currentUser } from "@/lib/mock-data";
 
 export function AppHeader() {
@@ -15,12 +17,23 @@ export function AppHeader() {
             </a>
             <Container>
                 <div className="flex h-16 items-center justify-between gap-3">
-                    <Link href="/" className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
-                            <Compass className="h-5 w-5" />
+                    <Link
+                        href="/"
+                        className="flex min-w-0 items-center gap-3"
+                        aria-label={`Retour à l'accueil ${siteConfig.name}`}
+                    >
+                        <div className="flex h-10 items-center">
+                            <Image
+                                src={siteConfig.logo}
+                                alt={`${siteConfig.name} logo`}
+                                width={112}
+                                height={32}
+                                priority
+                                className="h-8 w-auto object-contain sm:h-9"
+                            />
                         </div>
-                        <div>
-                            <div className="text-sm font-semibold tracking-wide">TravelFlow</div>
+                        <div className="min-w-0">
+                            <div className="truncate text-sm font-semibold tracking-wide">{siteConfig.name}</div>
                             <div className="text-muted-foreground text-xs">Souvenirs collaboratifs</div>
                         </div>
                     </Link>
