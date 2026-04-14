@@ -19,19 +19,29 @@ const quicksand = Quicksand({
 });
 
 export const viewport: Viewport = {
-    themeColor: "#ffffff",
+    themeColor: siteConfig.themeColor,
     width: "device-width",
     initialScale: 1,
     maximumScale: 1, // Préparation mobile-first / PWA
 };
 
 export const metadata: Metadata = {
+    applicationName: siteConfig.name,
     title: {
         default: siteConfig.name,
         template: `%s | ${siteConfig.name}`,
     },
     description: siteConfig.description,
     metadataBase: new URL(siteConfig.url),
+    manifest: "/manifest.webmanifest",
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: "default",
+        title: siteConfig.shortName,
+    },
+    formatDetection: {
+        telephone: false,
+    },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
