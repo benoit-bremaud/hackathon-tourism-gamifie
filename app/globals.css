@@ -44,108 +44,100 @@
 
 /* =========================================================
    Brand tokens (Light)
-   Base brand: vert foncé / vert clair
+   Base brand: PicRush warm coral / orange / golden light
 ========================================================= */
 
 :root {
-  /* Radius global proche de ton ancien DS */
   --radius: 16px;
 
-  /* Surface */
-  --background: #f8fcf9;
-  --foreground: #0f1f16;
+  --background: #fff8f4;
+  --foreground: #2b1b1b;
 
   --card: #ffffff;
-  --card-foreground: #0f1f16;
+  --card-foreground: #2b1b1b;
 
   --popover: #ffffff;
-  --popover-foreground: #0f1f16;
+  --popover-foreground: #2b1b1b;
 
-  /* Brand */
-  --primary: #2f6f4f;
-
+  --primary: #ff8e53;
   --primary-foreground: #ffffff;
 
-  --secondary: #eef7f1;
+  --secondary: #fff1e8;
+  --secondary-foreground: #3a2320;
 
-  --secondary-foreground: #0f1f16;
+  --muted: #fff5ef;
+  --muted-foreground: #7b5d57;
 
-  --muted: #f2f8f4;
-  --muted-foreground: #5d6f63;
-
-  --accent: #e3f1e8;
-  --accent-foreground: #0f1f16;
+  --accent: #ff6b6b;
+  --accent-foreground: #ffffff;
 
   --destructive: #dc2626;
-  --border: rgba(18, 52, 37, 0.12);
-  --input: rgba(18, 52, 37, 0.12);
+  --border: rgba(255, 142, 83, 0.18);
+  --input: rgba(255, 142, 83, 0.18);
 
-  /* Focus ring = brand */
-  --ring: var(--primary);
+  --ring: #ff8e53;
 
-  /* =========================================================
-     Custom tokens hérités (bars / pills / soft bg)
-  ========================================================= */
-  --mk-bar-bg: rgba(47, 111, 79, 0.55);
-  --mk-bar-border: rgba(47, 111, 79, 0.20);
-  --mk-bar-fg: rgba(255, 255, 255, 0.95);
-  --mk-bar-icon-bg: rgba(255, 255, 255, 0.16);
+  --mk-bar-bg: rgba(255, 142, 83, 0.55);
+  --mk-bar-border: rgba(255, 107, 107, 0.24);
+  --mk-bar-fg: rgba(255, 255, 255, 0.96);
+  --mk-bar-icon-bg: rgba(255, 255, 255, 0.18);
 
-  --mk-pill-border: rgba(47, 111, 79, 0.55);
-  --mk-pill-hover-bg: rgba(47, 111, 79, 0.10);
-  --mk-pill-hover-border: rgba(47, 111, 79, 0.70);
+  --mk-pill-border: rgba(255, 142, 83, 0.55);
+  --mk-pill-hover-bg: rgba(255, 107, 107, 0.10);
+  --mk-pill-hover-border: rgba(255, 107, 107, 0.72);
 
-  --mk-soft-bg: rgba(47, 111, 79, 0.06);
+  --mk-soft-bg: rgba(255, 142, 83, 0.08);
 
-  /* Option : ombres comme avant */
-  --mk-shadow-sm: 0 8px 18px rgba(0, 0, 0, 0.10);
-  --mk-shadow-md: 0 12px 26px rgba(0, 0, 0, 0.14);
+  --mk-shadow-sm: 0 8px 18px rgba(45, 22, 18, 0.10);
+  --mk-shadow-md: 0 12px 26px rgba(45, 22, 18, 0.16);
 }
 
 /* =========================================================
    Dark mode
-   Primary: vert clair
+   Ambiance: night camera app, warm highlights over deep lens tones
 ========================================================= */
 
 .dark {
-  --background: #0b140f;
-  --foreground: #f6fbf7;
+  --background: #140f16;
+  --foreground: #fff4ee;
 
-  --card: #101b14;
-  --card-foreground: #f6fbf7;
+  --card: #1c1520;
+  --card-foreground: #fff4ee;
 
-  --popover: #101b14;
-  --popover-foreground: #f6fbf7;
+  --popover: #1c1520;
+  --popover-foreground: #fff4ee;
 
-  --primary: #74c69d;
-  /* primary dark */
-  --primary-foreground: #0b1c13;
+  --primary: #ff8e53;
+  --primary-foreground: #1a1a2e;
 
   --secondary: rgba(255, 255, 255, 0.08);
-  --secondary-foreground: #f6fbf7;
+  --secondary-foreground: #fff4ee;
 
   --muted: rgba(255, 255, 255, 0.08);
-  --muted-foreground: rgba(246, 251, 247, 0.70);
+  --muted-foreground: rgba(255, 244, 238, 0.72);
 
-  --accent: rgba(116, 198, 157, 0.14);
-  --accent-foreground: #f6fbf7;
+  --accent: rgba(255, 107, 107, 0.18);
+  --accent-foreground: #fff4ee;
 
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.12);
   --input: rgba(255, 255, 255, 0.14);
 
-  --ring: #74c69d;
+  --ring: #ff8e53;
 
-  --mk-bar-bg: rgba(116, 198, 157, 0.45);
-  --mk-bar-border: rgba(167, 226, 196, 0.22);
+  --mk-bar-bg: rgba(255, 142, 83, 0.38);
+  --mk-bar-border: rgba(255, 200, 87, 0.20);
   --mk-bar-fg: rgba(255, 255, 255, 0.95);
   --mk-bar-icon-bg: rgba(255, 255, 255, 0.14);
 
-  --mk-pill-border: rgba(116, 198, 157, 0.55);
-  --mk-pill-hover-bg: rgba(116, 198, 157, 0.14);
-  --mk-pill-hover-border: rgba(167, 226, 196, 0.55);
+  --mk-pill-border: rgba(255, 142, 83, 0.55);
+  --mk-pill-hover-bg: rgba(255, 107, 107, 0.16);
+  --mk-pill-hover-border: rgba(255, 200, 87, 0.48);
 
-  --mk-soft-bg: rgba(116, 198, 157, 0.10);
+  --mk-soft-bg: rgba(255, 142, 83, 0.12);
+
+  --mk-shadow-sm: 0 8px 18px rgba(0, 0, 0, 0.26);
+  --mk-shadow-md: 0 12px 26px rgba(0, 0, 0, 0.34);
 }
 
 @layer base {
@@ -156,8 +148,9 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(circle at top, rgba(244, 181, 122, 0.10), transparent 30%),
-      linear-gradient(180deg, rgba(255,255,255,0.52), rgba(248,252,249,0.96));
+      radial-gradient(circle at top, rgba(255, 107, 107, 0.14), transparent 30%),
+      radial-gradient(circle at 78% 10%, rgba(255, 200, 87, 0.12), transparent 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 248, 244, 0.96));
   }
 
   h1,
