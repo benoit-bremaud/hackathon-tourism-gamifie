@@ -83,15 +83,15 @@ export const currentUser: User = {
 };
 
 export const imageAssets = {
-    mobileJourney: "/images/user_mobile.png",
-    albumBoard: "/images/album_photos.png",
-    groupRooftop: "/images/friends.png",
-    voteBoard: "/images/vote_photos.png",
-    seaSunset: "/images/Coucher de soleil sur la mer turquoise.png",
-    streetGroup: "/images/Rires devant l'art de rue.png",
-    mistyBridge: "/images/Pont ancien au matin brumeux.png",
-    streetFood: "/images/Assiette vibrante de street food asiatique.png",
-    heritageDoor: "/images/Porte ancienne et détails en fer.png",
+    mobileJourney: "/images/user-mobile.jpg",
+    albumBoard: "/images/album-photos-board.jpg",
+    groupRooftop: "/images/friends-group-rooftop.jpg",
+    voteBoard: "/images/photo-vote-board.jpg",
+    seaSunset: "/images/sea-sunset-turquoise.jpg",
+    streetGroup: "/images/street-art-laughs.jpg",
+    mistyBridge: "/images/sea-sunset-turquoise.jpg",
+    streetFood: "/images/asian-street-food-plate.jpg",
+    heritageDoor: "/images/old-door-iron-details.jpg",
 } as const;
 
 export const trips: Trip[] = [
