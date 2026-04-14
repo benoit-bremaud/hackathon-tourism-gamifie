@@ -8,6 +8,8 @@ export function TripHero({ trip }: { trip: Trip }) {
         <section className="space-y-5">
             <GradientPhoto
                 tone={trip.tone}
+                imageSrc={trip.coverImage}
+                imageAlt={trip.name}
                 ratio="hero"
                 subtitle={trip.coverKicker}
                 title={trip.name}

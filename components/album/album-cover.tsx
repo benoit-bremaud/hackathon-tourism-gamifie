@@ -8,6 +8,8 @@ export function AlbumCover({ trip }: { trip: Trip }) {
         <section className="space-y-5">
             <GradientPhoto
                 tone={trip.tone}
+                imageSrc={trip.albumCoverImage}
+                imageAlt={trip.name}
                 ratio="hero"
                 subtitle="Album final"
                 title={trip.name}

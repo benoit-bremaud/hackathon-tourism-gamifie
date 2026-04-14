@@ -7,6 +7,7 @@ import { PlaceholderBadge } from "@/components/placeholders/placeholder-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { imageAssets } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
     title: "Connexion",
@@ -28,6 +29,8 @@ export default function LoginPage() {
                         </p>
                         <GradientPhoto
                             tone="coast"
+                            imageSrc={imageAssets.groupRooftop}
+                            imageAlt="Groupe de voyageurs"
                             ratio="hero"
                             subtitle="TravelFlow access"
                             title="Roadbook, galerie et album au même endroit"

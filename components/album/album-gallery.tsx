@@ -11,6 +11,8 @@ export function AlbumGallery({ photos }: { photos: Photo[] }) {
                 {featured[0] ? (
                     <GradientPhoto
                         tone={featured[0].tone}
+                        imageSrc={featured[0].imageSrc}
+                        imageAlt={featured[0].title}
                         ratio="hero"
                         title={featured[0].title}
                         subtitle="Couverture de séquence"
@@ -21,6 +23,8 @@ export function AlbumGallery({ photos }: { photos: Photo[] }) {
                         <GradientPhoto
                             key={photo.id}
                             tone={photo.tone}
+                            imageSrc={photo.imageSrc}
+                            imageAlt={photo.title}
                             ratio="portrait"
                             title={photo.title}
                             subtitle={photo.tag}

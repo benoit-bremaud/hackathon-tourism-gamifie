@@ -8,7 +8,7 @@ import { GradientPhoto } from "@/components/placeholders/gradient-photo";
 import { MockStat } from "@/components/placeholders/mock-stat";
 import { PlaceholderBadge } from "@/components/placeholders/placeholder-badge";
 import { siteConfig } from "@/config/site";
-import { productHighlights, trips } from "@/lib/mock-data";
+import { imageAssets, productHighlights, trips } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
     title: "TravelFlow",
@@ -75,6 +75,8 @@ export default function HomePage() {
                             <div className="space-y-4">
                                 <GradientPhoto
                                     tone={featuredTrip.tone}
+                                    imageSrc={imageAssets.mobileJourney}
+                                    imageAlt="Aperçu mobile TravelFlow"
                                     ratio="hero"
                                     subtitle="Trip teaser"
                                     title={featuredTrip.name}
@@ -113,12 +115,16 @@ export default function HomePage() {
                                 <div className="grid grid-cols-2 gap-4">
                                     <GradientPhoto
                                         tone="coast"
+                                        imageSrc={featuredTrip.galleryPreview[1]}
+                                        imageAlt="Aperçu galerie"
                                         ratio="portrait"
                                         subtitle="Galerie"
                                         title="Pastel stop"
                                     />
                                     <GradientPhoto
                                         tone="desert"
+                                        imageSrc={imageAssets.albumBoard}
+                                        imageAlt="Teaser album"
                                         ratio="portrait"
                                         subtitle="Album"
                                         title="Golden rails"
@@ -188,12 +194,16 @@ export default function HomePage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <GradientPhoto
                                     tone="city"
+                                    imageSrc={featuredTrip.galleryPreview[0]}
+                                    imageAlt="Souvenir mobile"
                                     ratio="square"
                                     subtitle="Souvenir mobile"
                                     title="Street diary"
                                 />
                                 <GradientPhoto
                                     tone="mountain"
+                                    imageSrc={trips[1].coverImage}
+                                    imageAlt={trips[1].name}
                                     ratio="portrait"
                                     subtitle="Prochain trip"
                                     title="Lake quiet"
