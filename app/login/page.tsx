@@ -32,7 +32,7 @@ export default function LoginPage() {
                             imageSrc={imageAssets.groupRooftop}
                             imageAlt="Groupe de voyageurs"
                             ratio="hero"
-                            subtitle="TravelFlow access"
+                            subtitle="PicRush access"
                             title="Roadbook, galerie et album au même endroit"
                         />
                     </div>
@@ -60,7 +60,7 @@ export default function LoginPage() {
                                     <Input
                                         id="email"
                                         type="email"
-                                        placeholder="clara@travelflow.app"
+                                        placeholder="clara@picrush.app"
                                         className="h-12 rounded-2xl border-border/70 bg-background pl-11"
                                     />
                                 </div>

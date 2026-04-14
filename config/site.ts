@@ -1,8 +1,9 @@
 export const siteConfig = {
-    name: "TravelFlow",
+    name: "PicRush",
     description: "Planifiez, capturez et composez vos voyages collaboratifs en une seule app.",
     url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-    ogImage: "/og-image.png",
+    logo: "/branding/picrush-logo.svg",
+    ogImage: "/branding/picrush-logo.svg",
     mainNav: [
         {
             title: "Produit",
@@ -22,7 +23,7 @@ export const siteConfig = {
         },
     ],
     links: {
-        github: "https://github.com/travelflow",
+        github: "https://github.com/picrush",
     },
 };
 
